@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#a4f2a8">
+    android:background="#ceffd2">
 
     <ScrollView
         android:layout_width="match_parent"

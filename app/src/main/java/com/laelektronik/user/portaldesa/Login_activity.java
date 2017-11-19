@@ -7,14 +7,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Login_activity extends AppCompatActivity {
 
-    private EditText nama, password;
+    private EditText nama, pass;
     private TextView daftar;
     private Button masuk;
-
-    private String namax, passwordx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,17 +22,35 @@ public class Login_activity extends AppCompatActivity {
         setContentView(R.layout.login_activity);
 
         nama = (EditText) findViewById(R.id.namauser);
-        password = (EditText) findViewById(R.id.password);
+        pass = (EditText) findViewById(R.id.password);
         daftar = (TextView) findViewById(R.id.daftar);
         masuk = (Button) findViewById(R.id.submit1);
 
-        namax= nama.getText().toString();
-        passwordx = password.getText().toString();
-
         daftar.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
+
                 Intent intent = new Intent(Login_activity.this, Signup.class);
                 startActivity(intent);
+            }
+        });
+
+        masuk.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                String username = nama.getText().toString();
+                String password = pass.getText().toString();
+
+                // mengecek kolom yang kosong
+                if (username.trim().length() > 0 && password.trim().length() > 0) {
+                    Toast.makeText(getApplicationContext() ,"SELAMAT DATANG", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(Login_activity.this, MainActivity.class);
+                    startActivity(intent);
+                } else {
+                    // Prompt user to enter credentials
+                    Toast.makeText(getApplicationContext() ,"Kolom tidak boleh kosong", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

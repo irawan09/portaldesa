@@ -1,10 +1,12 @@
 package com.laelektronik.user.portaldesa;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
@@ -22,20 +24,34 @@ public class Splash extends AppCompatActivity {
         ConnectivityManager cm = (ConnectivityManager) getApplication().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
         if (netInfo != null && netInfo.isConnected()) {
-            Toast.makeText(getApplication(), "Anda terhubung ke "+netInfo.getTypeName()+" "+netInfo.getSubtypeName(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplication(), "Anda terhubung ke "+netInfo.getTypeName()+" "+netInfo.getSubtypeName(), Toast.LENGTH_LONG).show();
+
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable(){
+                @Override
+                public void run() {
+                    startActivity(new Intent(getApplicationContext(), Login_activity.class));
+                    finish();
+                }
+            }, 3000L);
         } else {
-            Toast.makeText(getApplication(), "Cek Koneksi Internetmu !", Toast.LENGTH_SHORT).show();
+            alertboxwifi("Koneksi Internet off", "Hidupkan Koneksi Internet");
         }
+    }
 
+    protected void alertboxwifi(String title, String mymessage) {
+        AlertDialog.Builder localBuilder = new AlertDialog.Builder(this);
+        localBuilder.setTitle("Aktifkan internet");
+        localBuilder.setMessage("Aplikasi ini membutuhkan koneksi internet!");
+        localBuilder.setNegativeButton("Keluar",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface paramDialogInterface,
+                                        int paramInt) {
+                        Splash.this.finish();
 
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable(){
-            @Override
-            public void run() {
-                startActivity(new Intent(getApplicationContext(), Login_activity.class));
-                finish();
-            }
-        }, 3000L);
-
+                    }
+                });
+        localBuilder.show();
+        localBuilder.setCancelable(true);
     }
 }
