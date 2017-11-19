@@ -3,6 +3,7 @@ package com.laelektronik.user.portaldesa;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,6 +27,8 @@ public class Login_activity extends AppCompatActivity {
         daftar = (TextView) findViewById(R.id.daftar);
         masuk = (Button) findViewById(R.id.submit1);
 
+        pass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+
         daftar.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
 
@@ -46,6 +49,7 @@ public class Login_activity extends AppCompatActivity {
                 if (username.trim().length() > 0 && password.trim().length() > 0) {
                     Toast.makeText(getApplicationContext() ,"SELAMAT DATANG", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(Login_activity.this, MainActivity.class);
+                    intent.putExtra("namauser", username);
                     startActivity(intent);
                 } else {
                     // Prompt user to enter credentials

@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:text="Kabar Desa"
             android:layout_gravity="center_horizontal"
-            android:textSize="40sp"/>
+            android:textSize="35sp"/>
 
         <EditText
             android:id="@+id/namauser"
@@ -48,7 +48,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
-            android:textColorHint="#FFFF" />
+            android:textColorHint="#FFFF"
+            android:inputType="textPassword"/>
 
         <Button
             android:id="@+id/submit1"

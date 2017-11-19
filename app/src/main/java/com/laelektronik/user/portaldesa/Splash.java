@@ -43,6 +43,16 @@ public class Splash extends AppCompatActivity {
         AlertDialog.Builder localBuilder = new AlertDialog.Builder(this);
         localBuilder.setTitle("Aktifkan internet");
         localBuilder.setMessage("Aplikasi ini membutuhkan koneksi internet!");
+        localBuilder.setPositiveButton("Reload",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface paramDialogInterface,
+                                        int paramInt) {
+
+                        Splash.this.finish();
+                        Splash.this.startActivity(getIntent());
+                    }
+                });
+
         localBuilder.setNegativeButton("Keluar",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface paramDialogInterface,
