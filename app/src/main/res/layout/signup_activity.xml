@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#a4f2a8">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="16dp"
+                android:text="DAFTAR AKUN"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="24dp"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <EditText
+                android:id="@+id/namauser1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nama"
+                android:textColorHint="#000000" />
+
+            <EditText
+                android:id="@+id/lahir1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Tanggal lahir"
+                android:textColorHint="#000000" />
+
+            <EditText
+                android:id="@+id/alamat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Alamat"
+                android:textColorHint="#000000" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Jenis Kelamin"
+                android:textColor="#000000" />
+
+            <RadioGroup
+                android:id="@+id/kelamin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/laki"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Laki-laki" />
+
+                <RadioButton
+                    android:id="@+id/perempuan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Perempuan" />
+
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/instansi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Instansi"
+                android:textColorHint="#000000" />
+
+            <EditText
+                android:id="@+id/telepon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Telepon"
+                android:textColorHint="#000000" />
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="E-mail"
+                android:textColorHint="#000000" />
+
+            <EditText
+                android:id="@+id/pass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:textColorHint="#000000" />
+
+            <Button
+                android:id="@+id/submit2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:layout_marginRight="80dp"
+                android:text="SUBMIT" />
+        </LinearLayout>
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>
