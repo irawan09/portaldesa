@@ -1,11 +1,10 @@
 package com.laelektronik.user.portaldesa.Utama;
 
-
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -18,6 +17,9 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.laelektronik.user.portaldesa.Fragment.HomeFragment;
+import com.laelektronik.user.portaldesa.Fragment.ProgramKerjaFragment;
+import com.laelektronik.user.portaldesa.Fragment.PublikasiDesaFragment;
+import com.laelektronik.user.portaldesa.Fragment.PustakaDesaFragment;
 import com.laelektronik.user.portaldesa.R;
 
 public class MainActivity extends AppCompatActivity
@@ -63,9 +65,9 @@ public class MainActivity extends AppCompatActivity
 
         if (savedInstanceState == null) {
            fragment = new HomeFragment();
-           MenuItem menu = navigationView.getMenu().findItem(R.id.nav_berita);
 
-
+           fragmentManager = getSupportFragmentManager();
+           fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).commit();
         }
     }
 
@@ -109,14 +111,19 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_berita) {
             // Handle the camera action
+            fragment = new HomeFragment();
+            callFragment(fragment);
         } else if (id == R.id.nav_proker) {
-
+            fragment = new ProgramKerjaFragment();
+            callFragment(fragment);
         } else if (id == R.id.nav_pustaka) {
-
+            fragment = new PustakaDesaFragment();
+            callFragment(fragment);
         } else if (id == R.id.nav_komunitas) {
 
         } else if (id == R.id.nav_publikasi) {
-
+            fragment = new PublikasiDesaFragment();
+            callFragment(fragment);
         } else if (id == R.id.nav_about) {
 
         } else if (id == R.id.nav_logout){
@@ -126,5 +133,13 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void callFragment(Fragment fragment) {
+        fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame_container, fragment)
+                .addToBackStack(null)
+                .commit();
     }
 }
