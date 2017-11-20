@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_pustaka) {
             fragment = new PustakaDesaFragment();
             callFragment(fragment);
-        } else if (id == R.id.nav_komunitas) {
+        } else if (id == R.id.nav_video) {
 
         } else if (id == R.id.nav_publikasi) {
             fragment = new PublikasiDesaFragment();

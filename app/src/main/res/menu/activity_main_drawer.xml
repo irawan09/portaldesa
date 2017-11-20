@@ -17,9 +17,9 @@
             android:icon="@drawable/ic_view_headline_black_24dp"
             android:title="Pustaka Desa" />
         <item
-            android:id="@+id/nav_komunitas"
-            android:icon="@drawable/ic_people_black_24dp"
-            android:title="Komunitas Desa" />
+            android:id="@+id/nav_video"
+            android:icon="@drawable/ic_videocam_black_24dp"
+            android:title="Video" />
         <item
             android:id="@+id/nav_publikasi"
             android:icon="@drawable/ic_publish_black_24dp"
