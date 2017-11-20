@@ -12,10 +12,10 @@ import com.laelektronik.user.portaldesa.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Publikasi_desa_fragment extends Fragment {
+public class DetailBeritaFragment extends Fragment {
 
 
-    public Publikasi_desa_fragment() {
+    public DetailBeritaFragment() {
         // Required empty public constructor
     }
 
@@ -24,7 +24,7 @@ public class Publikasi_desa_fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_publikasi_desa_fragment, container, false);
+        return inflater.inflate(R.layout.fragment_detail__berita, container, false);
     }
 
 }

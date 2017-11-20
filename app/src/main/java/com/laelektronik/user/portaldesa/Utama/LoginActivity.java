@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.laelektronik.user.portaldesa.R;
 
-public class Login_activity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private EditText nama, pass;
     private TextView daftar;
@@ -34,7 +34,7 @@ public class Login_activity extends AppCompatActivity {
         daftar.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
 
-                Intent intent = new Intent(Login_activity.this, Signup.class);
+                Intent intent = new Intent(LoginActivity.this, Signup.class);
                 startActivity(intent);
             }
         });
@@ -50,7 +50,7 @@ public class Login_activity extends AppCompatActivity {
                 // mengecek kolom yang kosong
                 if (username.trim().length() > 0 && password.trim().length() > 0) {
                     Toast.makeText(getApplicationContext() ,"SELAMAT DATANG", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(Login_activity.this, MainActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     intent.putExtra("namauser", username);
                     startActivity(intent);
                 } else {

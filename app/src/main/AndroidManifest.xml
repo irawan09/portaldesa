@@ -22,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Utama.Login_activity"></activity>
+        <activity android:name=".Utama.LoginActivity"></activity>
         <activity android:name=".Utama.Signup"></activity>
         <activity android:name=".Utama.MainActivity"></activity>
     </application>

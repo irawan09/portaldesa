@@ -12,10 +12,10 @@ import com.laelektronik.user.portaldesa.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Biodata_fragment extends Fragment {
+public class BiodataFragment extends Fragment {
 
 
-    public Biodata_fragment() {
+    public BiodataFragment() {
         // Required empty public constructor
     }
 

@@ -12,10 +12,10 @@ import com.laelektronik.user.portaldesa.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Detail_berita_fragment extends Fragment {
+public class HomeFragment extends Fragment {
 
 
-    public Detail_berita_fragment() {
+    public HomeFragment() {
         // Required empty public constructor
     }
 
@@ -24,7 +24,7 @@ public class Detail_berita_fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail__berita, container, false);
+        return inflater.inflate(R.layout.fragment_home_fragment, container, false);
     }
 
 }
