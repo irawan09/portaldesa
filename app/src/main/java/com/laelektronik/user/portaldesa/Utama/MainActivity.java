@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
         //Mengeset nama User yang sedang aktif (login)
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
