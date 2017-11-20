@@ -34,6 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nama"
+                android:singleLine="true"
                 android:textColorHint="#000000" />
 
             <EditText
@@ -41,6 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Tanggal lahir"
+                android:singleLine="true"
                 android:textColorHint="#000000" />
 
             <EditText
@@ -80,6 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Instansi"
+                android:singleLine="true"
                 android:textColorHint="#000000" />
 
             <EditText
@@ -87,6 +90,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Telepon"
+                android:singleLine="true"
                 android:textColorHint="#000000" />
 
             <EditText
@@ -94,6 +98,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="E-mail"
+                android:singleLine="true"
                 android:textColorHint="#000000" />
 
             <EditText
@@ -101,6 +106,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Password"
+                android:singleLine="true"
                 android:textColorHint="#000000" />
 
             <Button

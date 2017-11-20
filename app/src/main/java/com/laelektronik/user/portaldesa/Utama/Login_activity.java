@@ -1,4 +1,4 @@
-package com.laelektronik.user.portaldesa;
+package com.laelektronik.user.portaldesa.Utama;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.laelektronik.user.portaldesa.R;
 
 public class Login_activity extends AppCompatActivity {
 

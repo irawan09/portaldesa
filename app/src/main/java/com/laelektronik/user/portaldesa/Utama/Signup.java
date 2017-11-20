@@ -1,6 +1,7 @@
-package com.laelektronik.user.portaldesa;
+package com.laelektronik.user.portaldesa.Utama;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,9 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
+
+import com.laelektronik.user.portaldesa.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -20,9 +24,9 @@ public class Signup extends AppCompatActivity {
     private Button kirim;
     private Calendar calendar;
     private int year, month, day;
-    private String namax, lahirx, alamatx, instansix, teleponx, emailx, passwordx;
+    private String namax, lahirx, alamatx, kelaminx, instansix, teleponx, emailx, passwordx;
     private RadioGroup radioGroupNb;
-    private RadioButton radioButtonNb;
+    private RadioButton l, p ;
     private SimpleDateFormat dateFormatter;
     private DatePickerDialog datePickerDialog;
 
@@ -41,6 +45,7 @@ public class Signup extends AppCompatActivity {
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.pass);
         kirim = (Button) findViewById(R.id.submit2);
+
         radioGroupNb = (RadioGroup) findViewById(R.id.kelamin);
 
         /**
@@ -56,13 +61,39 @@ public class Signup extends AppCompatActivity {
             }
         });
 
-        namax = nama.getText().toString();
-        lahirx = lahir.getText().toString();
-        alamatx = alamat.getText().toString();
-        instansix = instansi.getText().toString();
-        teleponx = telepon.getText().toString();
-        emailx = email.getText().toString();
-        passwordx = password.getText().toString();
+        kirim.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                namax = nama.getText().toString();
+                lahirx = lahir.getText().toString();
+                alamatx = alamat.getText().toString();
+                instansix = instansi.getText().toString();
+                teleponx = telepon.getText().toString();
+                emailx = email.getText().toString();
+                passwordx = password.getText().toString();
+
+                int id = radioGroupNb.getCheckedRadioButtonId();
+
+                switch (id){
+                    case R.id.laki :
+                        kelaminx = "laki-laki";
+                        break;
+                    case R.id.perempuan :
+                        kelaminx = "perempuan";
+                        break;
+                }
+
+                // mengecek kolom yang kosong
+                if (namax.trim().length()>0 && lahirx.trim().length()>0 && alamatx.trim().length()>0 && instansix.trim().length()>0 && teleponx.trim().length()>0 && emailx.trim().length()>0  && passwordx.trim().length()>0 && kelaminx.trim().length()>0) {
+                    Toast.makeText(getApplicationContext() ,"KIRIM DATA", Toast.LENGTH_LONG).show();
+                } else {
+                    // Prompt user to enter credentials
+                    Toast.makeText(getApplicationContext() ,"Kolom tidak boleh kosong", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
     private void showDateDialog(){

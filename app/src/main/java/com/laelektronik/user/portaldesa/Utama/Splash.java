@@ -1,4 +1,4 @@
-package com.laelektronik.user.portaldesa;
+package com.laelektronik.user.portaldesa.Utama;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -11,6 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.Toast;
+
+import com.laelektronik.user.portaldesa.R;
 
 
 public class Splash extends AppCompatActivity {

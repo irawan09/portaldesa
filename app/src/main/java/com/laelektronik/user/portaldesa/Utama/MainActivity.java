@@ -1,9 +1,7 @@
-package com.laelektronik.user.portaldesa;
+package com.laelektronik.user.portaldesa.Utama;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,11 +11,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.laelektronik.user.portaldesa.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     String username;
+
+    private NavigationView navigationView;
+    private View navHeader;
+    private TextView name, jabatan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,12 +30,18 @@ public class MainActivity extends AppCompatActivity
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        EditText nama = (EditText) findViewById(R.id.user);
+        //Mengeset nama User yang sedang aktif (login)
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        navHeader = navigationView.getHeaderView(0);
+        name = (TextView) navHeader.findViewById(R.id.user);
+        jabatan = (TextView) navHeader.findViewById(R.id.jabatan);
+
 
         Intent in = getIntent();
         username = in.getStringExtra("namauser");
-        String a = username.toString();
-     //   nama.setText(a);
+        String useraktif = username.toString();
+        name.setText("useraktif");
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 

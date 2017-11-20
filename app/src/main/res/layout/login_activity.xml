@@ -34,13 +34,14 @@
             android:layout_height="wrap_content"
             android:text="Kabar Desa"
             android:layout_gravity="center_horizontal"
-            android:textSize="35sp"/>
+            android:textSize="25sp"/>
 
         <EditText
             android:id="@+id/namauser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Username"
+            android:singleLine="true"
             android:textColorHint="#FFFF" />
 
         <EditText
@@ -48,6 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
+            android:singleLine="true"
             android:textColorHint="#FFFF"
             android:inputType="textPassword"/>
 
