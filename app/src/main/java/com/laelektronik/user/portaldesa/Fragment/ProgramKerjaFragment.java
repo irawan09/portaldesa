@@ -49,9 +49,9 @@ public class ProgramKerjaFragment extends Fragment {
         TableLayout tablelayoutid = (TableLayout) rootView.findViewById(R.id.tablelayoutid);
         for(int i=0;i<3;i++) {
             TableRow row = (TableRow) getLayoutInflater().inflate(R.layout.layout_row, null);
-            ((TextView) row.findViewById(R.id.desc_program)).setText("Mari menabung cawet");
-            ((TextView) row.findViewById(R.id.progres)).setText("Perusahaan D");
-            ((TextView) row.findViewById(R.id.subdit)).setText("Pecahkan celengan");
+            ((TextView) row.findViewById(R.id.desc_program)).setText("cawet");
+            ((TextView) row.findViewById(R.id.progres)).setText("Dede Yusuf");
+            ((TextView) row.findViewById(R.id.subdit)).setText("Celengan");
             ((TextView) row.findViewById(R.id.apamungkin)).setText("apamungkin");
             tablelayoutid.addView(row);
         }
