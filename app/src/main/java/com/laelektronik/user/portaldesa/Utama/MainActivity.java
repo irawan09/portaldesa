@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity
         Intent in = getIntent();
         username = in.getStringExtra("namauser");
         String useraktif = username.toString();
-        name.setText("useraktif");
+        name.setText(useraktif);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 

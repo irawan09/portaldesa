@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ECEFF1"
+    android:padding="5dp">
+    <TextView
+        android:id="@+id/desc_program"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:text="supermen" />
+    <TextView
+        android:id="@+id/progres"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Perusahaan C" />
+    <TextView
+        android:id="@+id/subdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Masuk" />
+    <TextView
+        android:id="@+id/apamungkin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Apa mungkin" />
+</TableRow>

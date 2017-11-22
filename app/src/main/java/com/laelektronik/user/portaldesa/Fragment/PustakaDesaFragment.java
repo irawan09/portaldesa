@@ -23,8 +23,10 @@ public class PustakaDesaFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_program_kerja, container, false);
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pustaka_desa, container, false);
+        return rootView;
     }
 
 }
