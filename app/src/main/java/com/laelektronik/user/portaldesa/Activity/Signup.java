@@ -1,7 +1,6 @@
-package com.laelektronik.user.portaldesa.Utama;
+package com.laelektronik.user.portaldesa.Activity;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;

@@ -1,4 +1,4 @@
-package com.laelektronik.user.portaldesa.Utama;
+package com.laelektronik.user.portaldesa.Activity;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -10,7 +10,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
-import android.widget.Toast;
 
 import com.laelektronik.user.portaldesa.R;
 

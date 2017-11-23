@@ -23,7 +23,7 @@
         <item
             android:id="@+id/nav_publikasi"
             android:icon="@drawable/ic_publish_black_24dp"
-            android:title="Publikasi" />
+            android:title="Publikasi Desa" />
         <item
             android:id="@+id/nav_about"
             android:icon="@drawable/ic_person_black_24dp"
