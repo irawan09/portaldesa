@@ -17,9 +17,10 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.laelektronik.user.portaldesa.Fragment.HomeFragment;
-import com.laelektronik.user.portaldesa.Fragment.ProgramKerjaFragment;
-import com.laelektronik.user.portaldesa.Fragment.PublikasiDesaFragment;
+import com.laelektronik.user.portaldesa.Fragment.KegiatanFragment;
+import com.laelektronik.user.portaldesa.Fragment.LokasiKegiatanFragment;
 import com.laelektronik.user.portaldesa.Fragment.PustakaDesaFragment;
+import com.laelektronik.user.portaldesa.Fragment.VideoFragment;
 import com.laelektronik.user.portaldesa.R;
 
 public class MainActivity extends AppCompatActivity
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
+        setSupportActionBar(toolbar);
         //Mengeset nama User yang sedang aktif (login)
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -112,18 +113,19 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_berita) {
             // Handle the camera action
             fragment = new HomeFragment();
-            callFragment(fragment);
-        } else if (id == R.id.nav_proker) {
-            fragment = new ProgramKerjaFragment();
-            callFragment(fragment);
+            callFragment(fragment, item.getTitle().toString(),id,0);
+        } else if (id == R.id.nav_video) {
+            fragment = new VideoFragment();
+            callFragment(fragment, item.getTitle().toString(), id, 1);
         } else if (id == R.id.nav_pustaka) {
             fragment = new PustakaDesaFragment();
-            callFragment(fragment);
-        } else if (id == R.id.nav_video) {
-
-        } else if (id == R.id.nav_publikasi) {
-            fragment = new PublikasiDesaFragment();
-            callFragment(fragment);
+            callFragment(fragment, item.getTitle().toString(), id, 2);
+        } else if (id == R.id.nav_kegiatan) {
+            fragment = new KegiatanFragment();
+            callFragment(fragment, item.getTitle().toString(), id, 3);
+        } else if (id == R.id.nav_lokasi) {
+            fragment = new LokasiKegiatanFragment();
+            callFragment(fragment, item.getTitle().toString(), id, 4);
         } else if (id == R.id.nav_about) {
 
         } else if (id == R.id.nav_logout){
@@ -135,11 +137,27 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    public void callFragment(Fragment fragment) {
+    public void callFragment(Fragment fragment, String s, int id, int i) {
+        Bundle bundle = new Bundle();
+        bundle.putString("pesan", s);
+        bundle.putInt("id", id);
+        bundle.putInt("category", i);
+        fragment.setArguments(bundle);
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_container, fragment)
                 .addToBackStack(null)
                 .commit();
     }
+
+    public void setTitleActionBar(String title) {
+
+        getSupportActionBar().setTitle("Ary");
+    }
+
+    public void setSelectedItem(int id) {
+        navigationView.getMenu().findItem(id).setChecked(true);
+    }
+
+
 }

@@ -9,21 +9,21 @@
             android:icon="@drawable/ic_view_day_black_24dp"
             android:title="Berita Desa" />
         <item
-            android:id="@+id/nav_proker"
-            android:icon="@drawable/ic_list_black_24dp"
-            android:title="Program Kerja" />
+            android:id="@+id/nav_video"
+            android:icon="@drawable/ic_videocam_black_24dp"
+            android:title="Video Desa" />
         <item
             android:id="@+id/nav_pustaka"
             android:icon="@drawable/ic_view_headline_black_24dp"
             android:title="Pustaka Desa" />
         <item
-            android:id="@+id/nav_video"
-            android:icon="@drawable/ic_videocam_black_24dp"
-            android:title="Video" />
+            android:id="@+id/nav_kegiatan"
+            android:icon="@drawable/ic_transfer_within_a_station_black_24dp"
+            android:title="Kegiatan" />
         <item
-            android:id="@+id/nav_publikasi"
-            android:icon="@drawable/ic_publish_black_24dp"
-            android:title="Publikasi Desa" />
+            android:id="@+id/nav_lokasi"
+            android:icon="@drawable/ic_location_on_black_24dp"
+            android:title="Lokasi Kegiatan" />
         <item
             android:id="@+id/nav_about"
             android:icon="@drawable/ic_person_black_24dp"

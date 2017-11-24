@@ -2,18 +2,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.laelektronik.user.portaldesa.Fragment.ProgramKerjaFragment">
-
-    <com.github.mikephil.charting.charts.BarChart
-    android:id="@+id/chart"
-    android:layout_width="400dp"
-    android:layout_height="200dp" />
+    tools:context="com.laelektronik.user.portaldesa.Fragment.KegiatanFragment">
 
     <TableLayout
         android:id="@+id/tablelayoutid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/chart"
         android:layout_marginTop="10dp">
 
         <TableRow
@@ -23,25 +17,32 @@
             <TextView
                 android:layout_width="125dp"
                 android:layout_height="wrap_content"
-                android:text="Deskripsi Program" />
+                android:text="Kegiatan" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Progress" />
+                android:text="Lokasi" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Subdit" />
+                android:text="Penyedia" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Apa Mungkin"/>
+                android:text="Nilai Kontrak"/>
         </TableRow>
 
     </TableLayout>
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/chart"
+        android:layout_width="400dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="32dp"
+        android:layout_below="@+id/tablelayoutid"/>
 
 </RelativeLayout>

@@ -5,26 +5,22 @@
     android:background="#ECEFF1"
     android:padding="5dp">
     <TextView
-        android:id="@+id/desc_program"
+        android:id="@+id/desc_kegiatan"
         android:layout_width="125dp"
-        android:layout_height="wrap_content"
-        android:text="supermen" />
+        android:layout_height="wrap_content" />
     <TextView
-        android:id="@+id/progres"
+        android:id="@+id/lokasi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Perusahaan C" />
+        android:layout_weight="1" />
     <TextView
-        android:id="@+id/subdit"
+        android:id="@+id/penyedia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Masuk" />
+        android:layout_weight="1" />
     <TextView
-        android:id="@+id/apamungkin"
+        android:id="@+id/nilai_kontrak"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Apa mungkin" />
+        android:layout_weight="1" />
 </TableRow>

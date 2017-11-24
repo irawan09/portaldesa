@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TableLayout;
@@ -13,10 +12,11 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.utils.ColorTemplate;
+import com.laelektronik.user.portaldesa.Activity.MainActivity;
 import com.laelektronik.user.portaldesa.R;
 
 import java.util.ArrayList;
@@ -24,10 +24,10 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ProgramKerjaFragment extends Fragment {
+public class KegiatanFragment extends Fragment {
 
 
-    public ProgramKerjaFragment() {
+    public KegiatanFragment() {
         // Required empty public constructor
     }
 
@@ -35,7 +35,13 @@ public class ProgramKerjaFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_program_kerja, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_kegiatan, container, false);
+
+        String pesan = getArguments().getString("pesan");
+        final int id = getArguments().getInt("id");
+
+        ((MainActivity) getActivity()).setTitleActionBar(pesan);
+        ((MainActivity) getActivity()).setSelectedItem(id);
 
         BarChart chart1 = (BarChart) rootView.findViewById(R.id.chart);
 
@@ -43,16 +49,18 @@ public class ProgramKerjaFragment extends Fragment {
         chart1.setData(data);
         chart1.setDescription("");
         chart1.animateXY(2000, 2000);
+        chart1.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
+        chart1.setVisibleXRange(10);
         chart1.invalidate();
 
         //Maembuat Tabel dinamis
         TableLayout tablelayoutid = (TableLayout) rootView.findViewById(R.id.tablelayoutid);
         for(int i=0;i<3;i++) {
             TableRow row = (TableRow) getLayoutInflater().inflate(R.layout.layout_row, null);
-            ((TextView) row.findViewById(R.id.desc_program)).setText("cawet");
-            ((TextView) row.findViewById(R.id.progres)).setText("Dede Yusuf");
-            ((TextView) row.findViewById(R.id.subdit)).setText("Celengan");
-            ((TextView) row.findViewById(R.id.apamungkin)).setText("apamungkin");
+            ((TextView) row.findViewById(R.id.desc_kegiatan)).setText("Pendukung Ekonomi");
+            ((TextView) row.findViewById(R.id.lokasi)).setText("NTB");
+            ((TextView) row.findViewById(R.id.penyedia)).setText("PT. Nusa");
+            ((TextView) row.findViewById(R.id.nilai_kontrak)).setText("100.000.000");
             tablelayoutid.addView(row);
         }
 
@@ -110,6 +118,7 @@ public class ProgramKerjaFragment extends Fragment {
         xAxis.add("2014");
         xAxis.add("2015");
         xAxis.add("2016");
+
         return xAxis;
     }
 

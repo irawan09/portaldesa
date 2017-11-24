@@ -16,17 +16,18 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.laelektronik.user.portaldesa.Activity.MainActivity;
 import com.laelektronik.user.portaldesa.R;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PublikasiDesaFragment extends Fragment {
+public class LokasiKegiatanFragment extends Fragment {
 
     MapView mMapView;
     private GoogleMap googleMap;
 
-    public PublikasiDesaFragment() {
+    public LokasiKegiatanFragment() {
         // Required empty public constructor
     }
 
@@ -35,7 +36,9 @@ public class PublikasiDesaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_publikasi_desa, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_lokasi_kegiatan, container, false);
+
+
 
         mMapView = (MapView) rootView.findViewById(R.id.maps);
         mMapView.onCreate(savedInstanceState);
@@ -57,10 +60,10 @@ public class PublikasiDesaFragment extends Fragment {
 
                 // For dropping a marker at a point on the Map
                 LatLng location = new LatLng(-8.479649, 116.051404);
-                googleMap.addMarker(new MarkerOptions().position(location).title("Lokasi").snippet("Marker Description"));
+                googleMap.addMarker(new MarkerOptions().position(location).title("Lokasi").snippet("Deskripsi Lokasi"));
 
                 // For zooming automatically to the location of the marker
-                CameraPosition cameraPosition = new CameraPosition.Builder().target(location).zoom(12).build();
+                CameraPosition cameraPosition = new CameraPosition.Builder().target(location).zoom(3).build();
                 googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
             }
         });
@@ -68,6 +71,7 @@ public class PublikasiDesaFragment extends Fragment {
         // Inflate the layout for this fragment
         return rootView;
     }
+
 
     @Override
     public void onResume() {
