@@ -40,9 +40,11 @@
             android:id="@+id/namauser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Username"
+            android:hint="Nama"
             android:singleLine="true"
-            android:textColorHint="#FFFF" />
+            android:textColorHint="#FFFF"
+            android:background="#5bcf41"
+            android:layout_marginTop="8dp" />
 
         <EditText
             android:id="@+id/password"
@@ -50,14 +52,18 @@
             android:layout_height="wrap_content"
             android:hint="Password"
             android:singleLine="true"
+            android:layout_marginTop="8dp"
             android:textColorHint="#FFFF"
+            android:background="#5bcf41"
             android:inputType="textPassword"/>
 
         <Button
             android:id="@+id/submit1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SUBMIT"/>
+            android:background="#3bf508"
+            android:layout_marginTop="8dp"
+            android:text="MASUK"/>
 
         <TextView
             android:id="@+id/daftar"
