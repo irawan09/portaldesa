@@ -12,7 +12,7 @@
 
         <TableRow
         android:id="@+id/rowlay"
-        android:background="@android:color/holo_blue_light"
+        android:background="#FFFFFF"
         android:padding="5dp">
             <TextView
                 android:layout_width="125dp"

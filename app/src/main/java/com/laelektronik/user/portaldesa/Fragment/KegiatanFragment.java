@@ -68,9 +68,10 @@ public class KegiatanFragment extends Fragment {
         return rootView;
     }
 
+        //data untuk bar chart
     private ArrayList<BarDataSet> getDataSet() {
         ArrayList<BarDataSet> dataSets = null;
-
+        //data 1
         ArrayList<BarEntry> valueSet1 = new ArrayList<>();
         BarEntry v1e1 = new BarEntry(110.000f, 0); // 2011
         valueSet1.add(v1e1);
@@ -84,7 +85,7 @@ public class KegiatanFragment extends Fragment {
         valueSet1.add(v1e5);
         BarEntry v1e6 = new BarEntry(100.000f, 5); // 2016
         valueSet1.add(v1e6);
-
+        //data 2
         ArrayList<BarEntry> valueSet2 = new ArrayList<>();
         BarEntry v2e1 = new BarEntry(150.000f, 0); // 2011
         valueSet2.add(v2e1);
