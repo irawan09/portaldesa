@@ -15,8 +15,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.laelektronik.user.portaldesa.Fragment.HomeFragment;
+import com.laelektronik.user.portaldesa.Fragment.BeritaDesaFragment;
 import com.laelektronik.user.portaldesa.Fragment.KegiatanFragment;
 import com.laelektronik.user.portaldesa.Fragment.LokasiKegiatanFragment;
 import com.laelektronik.user.portaldesa.Fragment.PustakaDesaFragment;
@@ -39,7 +40,9 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //setting toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_search_white_24dp);
         setSupportActionBar(toolbar);
 
         //Mengeset nama User yang sedang aktif (login)
@@ -66,12 +69,13 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         if (savedInstanceState == null) {
-           fragment = new HomeFragment();
+           fragment = new BeritaDesaFragment();
            MenuItem menu = navigationView.getMenu().findItem(R.id.home);
 
            Bundle bundle = new Bundle();
-           bundle.putString("pesan", "HOME");
+           bundle.putString("pesan", "Kabar Desa");
 //           bundle.putInt("id", menu.getItemId());
+
            fragment.setArguments(bundle);
 
            fragmentManager = getSupportFragmentManager();
@@ -92,7 +96,9 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+
+        //getMenuInflater().inflate(R.menu.search, menu);
+        //getMenuInflater().inflate(R.menu.share, menu);
         return true;
     }
 
@@ -103,12 +109,18 @@ public class MainActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+         //noinspection SimplifiableIfStatement
+        if (id == R.id.search) {
+            Toast.makeText(getApplicationContext() ,"SEARCH", Toast.LENGTH_LONG).show();
             return true;
         }
 
-        return super.onOptionsItemSelected(item);
+        if (id == R.id.share) {
+            Toast.makeText(getApplicationContext() ,"SHARE", Toast.LENGTH_LONG).show();
+            return true;
+        }
+
+        return onOptionsItemSelected(item);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -118,20 +130,20 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_berita) {
-            fragment = new HomeFragment();
-            callFragment(fragment, item.getTitle().toString(),id,0);
+            fragment = new BeritaDesaFragment();
+            callFragment(fragment, item.getTitle().toString(),id,1);
         } else if (id == R.id.nav_video) {
             fragment = new VideoFragment();
-            callFragment(fragment, item.getTitle().toString(), id, 1);
+            callFragment(fragment, item.getTitle().toString(), id, 2);
         } else if (id == R.id.nav_pustaka) {
             fragment = new PustakaDesaFragment();
-            callFragment(fragment, item.getTitle().toString(), id, 2);
+            callFragment(fragment, item.getTitle().toString(), id, 3);
         } else if (id == R.id.nav_kegiatan) {
             fragment = new KegiatanFragment();
-            callFragment(fragment, item.getTitle().toString(), id, 3);
+            callFragment(fragment, item.getTitle().toString(), id, 4);
         } else if (id == R.id.nav_lokasi) {
             fragment = new LokasiKegiatanFragment();
-            callFragment(fragment, item.getTitle().toString(), id, 4);
+            callFragment(fragment, item.getTitle().toString(), id, 5);
         } else if (id == R.id.nav_about) {
 
         } else if (id == R.id.nav_logout){
@@ -164,6 +176,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void setSelectedItem(int id) {
+
         navigationView.getMenu().findItem(id).setChecked(true);
     }
 

@@ -4,6 +4,8 @@ package com.laelektronik.user.portaldesa.Fragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -13,10 +15,10 @@ import com.laelektronik.user.portaldesa.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment {
+public class BeritaDesaFragment extends Fragment {
 
 
-    public HomeFragment() {
+    public BeritaDesaFragment() {
         // Required empty public constructor
     }
 
@@ -25,7 +27,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_berita_desa, container, false);
 
         String pesan = getArguments().getString("pesan");
         final int id = getArguments().getInt("id");
@@ -35,6 +37,19 @@ public class HomeFragment extends Fragment {
 
         // Inflate the layout for this fragment \
         return rootView;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState){
+        super.onActivityCreated(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
+        //membentuk menu dari package menu
+        inflater.inflate(R.menu.search, menu);
+        return;
     }
 
 }

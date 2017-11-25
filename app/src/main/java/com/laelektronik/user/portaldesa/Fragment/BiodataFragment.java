@@ -37,5 +37,4 @@ public class BiodataFragment extends Fragment {
 
         return rootView;
     }
-
 }

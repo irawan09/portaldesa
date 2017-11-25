@@ -5,6 +5,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TableLayout;
@@ -66,6 +68,19 @@ public class KegiatanFragment extends Fragment {
 
         // Inflate the layout for this fragment
         return rootView;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState){
+        super.onActivityCreated(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
+        //membentuk menu dari package menu
+        inflater.inflate(R.menu.search, menu);
+        return;
     }
 
         //data untuk bar chart
