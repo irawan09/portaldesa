@@ -57,10 +57,10 @@ public class KegiatanFragment extends Fragment {
         TableLayout tablelayoutid = (TableLayout) rootView.findViewById(R.id.tablelayoutid);
         for(int i=0;i<3;i++) {
             TableRow row = (TableRow) getLayoutInflater().inflate(R.layout.layout_row, null);
-            ((TextView) row.findViewById(R.id.desc_kegiatan)).setText("Pendukung Ekonomi");
-            ((TextView) row.findViewById(R.id.lokasi)).setText("NTB");
-            ((TextView) row.findViewById(R.id.penyedia)).setText("PT. Nusa Tenggara Barat");
-            ((TextView) row.findViewById(R.id.nilai_kontrak)).setText("100.000.000");
+            ((TextView) row.findViewById(R.id.desc_kegiatan)).setText(" "+"Pendukung Ekonomi");
+            ((TextView) row.findViewById(R.id.lokasi)).setText(" "+"NTB");
+            ((TextView) row.findViewById(R.id.penyedia)).setText(" "+"PT. Nusa Tenggara Barat");
+            ((TextView) row.findViewById(R.id.nilai_kontrak)).setText(" "+"100.000.000");
             tablelayoutid.addView(row);
         }
 

@@ -12,28 +12,32 @@
 
         <TableRow
         android:id="@+id/rowlay"
-        android:background="#FFFFFF"
+        android:background="#f7ff00"
         android:padding="5dp">
             <TextView
                 android:layout_width="125dp"
                 android:layout_height="wrap_content"
-                android:text="Kegiatan" />
+                android:background="@drawable/table_shape"
+                android:layout_weight="1"
+                android:text=" Kegiatan" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Lokasi" />
+                android:background="@drawable/table_shape"
+                android:text=" Lokasi" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Penyedia" />
-
+                android:background="@drawable/table_shape"
+                android:text=" Penyedia" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Nilai Kontrak"/>
+                android:background="@drawable/table_shape"
+                android:text=" Nilai Kontrak"/>
         </TableRow>
 
     </TableLayout>
