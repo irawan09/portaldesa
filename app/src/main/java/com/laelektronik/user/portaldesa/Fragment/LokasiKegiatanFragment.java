@@ -38,6 +38,12 @@ public class LokasiKegiatanFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_lokasi_kegiatan, container, false);
 
+        String pesan = getArguments().getString("pesan");
+        final int id = getArguments().getInt("id");
+
+        ((MainActivity) getActivity()).setTitleActionBar(pesan);
+        ((MainActivity) getActivity()).setSelectedItem(id);
+
 
 
         mMapView = (MapView) rootView.findViewById(R.id.maps);

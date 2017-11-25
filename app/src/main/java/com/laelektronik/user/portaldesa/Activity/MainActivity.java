@@ -37,10 +37,11 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         //Mengeset nama User yang sedang aktif (login)
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -66,6 +67,12 @@ public class MainActivity extends AppCompatActivity
 
         if (savedInstanceState == null) {
            fragment = new HomeFragment();
+           MenuItem menu = navigationView.getMenu().findItem(R.id.home);
+
+           Bundle bundle = new Bundle();
+           bundle.putString("pesan", "HOME");
+//           bundle.putInt("id", menu.getItemId());
+           fragment.setArguments(bundle);
 
            fragmentManager = getSupportFragmentManager();
            fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).commit();
@@ -111,7 +118,6 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_berita) {
-            // Handle the camera action
             fragment = new HomeFragment();
             callFragment(fragment, item.getTitle().toString(),id,0);
         } else if (id == R.id.nav_video) {
@@ -138,6 +144,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void callFragment(Fragment fragment, String s, int id, int i) {
+        //Menyisipkan bundle untuk mengeset tiap activity fragment yang dipanggil
         Bundle bundle = new Bundle();
         bundle.putString("pesan", s);
         bundle.putInt("id", id);
@@ -150,9 +157,10 @@ public class MainActivity extends AppCompatActivity
                 .commit();
     }
 
+    //untuk mengeset tittle action bar agar diambil oleh fragment (beda tittle bar tiap fragment)
     public void setTitleActionBar(String title) {
 
-        getSupportActionBar().setTitle("Ary");
+        getSupportActionBar().setTitle(title);
     }
 
     public void setSelectedItem(int id) {

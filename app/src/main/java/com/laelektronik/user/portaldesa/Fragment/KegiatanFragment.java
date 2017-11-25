@@ -59,7 +59,7 @@ public class KegiatanFragment extends Fragment {
             TableRow row = (TableRow) getLayoutInflater().inflate(R.layout.layout_row, null);
             ((TextView) row.findViewById(R.id.desc_kegiatan)).setText("Pendukung Ekonomi");
             ((TextView) row.findViewById(R.id.lokasi)).setText("NTB");
-            ((TextView) row.findViewById(R.id.penyedia)).setText("PT. Nusa");
+            ((TextView) row.findViewById(R.id.penyedia)).setText("PT. Nusa Tenggara Barat");
             ((TextView) row.findViewById(R.id.nilai_kontrak)).setText("100.000.000");
             tablelayoutid.addView(row);
         }

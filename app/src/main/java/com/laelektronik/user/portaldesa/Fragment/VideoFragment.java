@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.laelektronik.user.portaldesa.Activity.MainActivity;
 import com.laelektronik.user.portaldesa.R;
 
 /**
@@ -25,6 +26,12 @@ public class VideoFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_lokasi_kegiatan, container, false);
+
+        String pesan = getArguments().getString("pesan");
+        final int id = getArguments().getInt("id");
+
+        ((MainActivity) getActivity()).setTitleActionBar(pesan);
+        ((MainActivity) getActivity()).setSelectedItem(id);
 
         /*
         VideoView view = (VideoView)rootView.findViewById(R.id.video_view);

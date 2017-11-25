@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.laelektronik.user.portaldesa.Activity.MainActivity;
 import com.laelektronik.user.portaldesa.R;
 
 /**
@@ -23,9 +24,16 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
-        // Inflate the layout for this fragment
+        String pesan = getArguments().getString("pesan");
+        final int id = getArguments().getInt("id");
+
+        ((MainActivity) getActivity()).setTitleActionBar(pesan);
+//        ((MainActivity) getActivity()).setSelectedItem(id);
+
+        // Inflate the layout for this fragment \
         return rootView;
     }
 

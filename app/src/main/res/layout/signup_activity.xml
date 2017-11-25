@@ -18,17 +18,6 @@
             android:layout_marginRight="16dp"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="16dp"
-                android:text="DAFTAR AKUN"
-                android:textAlignment="center"
-                android:textColor="#000000"
-                android:textSize="24dp"
-                app:layout_constraintBottom_toBottomOf="parent" />
-
             <EditText
                 android:id="@+id/namauser1"
                 android:layout_width="match_parent"
