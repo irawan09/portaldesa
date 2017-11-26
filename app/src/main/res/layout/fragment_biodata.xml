@@ -1,4 +1,4 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,7 +8,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#32b103">
+        android:background="#32b103"
+        android:id="@+id/relativeLayout">
 
         <ImageView
             android:id="@+id/imageView"
@@ -35,12 +36,119 @@
             android:layout_centerHorizontal="true"
             android:text="Kepala Desa" />
     </RelativeLayout>
-    <LinearLayout
+    <TextView
+        android:id="@+id/text1"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginTop="150dp">
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/relativeLayout"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Nama" />
+    <TextView
+        android:id="@+id/nama"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="101dp"
+        android:layout_marginTop="8dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/relativeLayout"
+        android:text=": Ary Kurniadi Irawan"/>
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/text1"
+        android:layout_marginLeft="8dp"
+        android:text="Tanggal Lahir"/>
+    <TextView
+        android:id="@+id/lahir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="101dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/text1"
+        android:text=": 1600 SM"/>
+    <TextView
+        android:id="@+id/text3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/text2"
+        android:layout_marginLeft="8dp"
+        android:text="Alamat"/>
+    <TextView
+        android:id="@+id/alamat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="101dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/text2"
+        android:text=": Rumahku"/>
+    <TextView
+        android:id="@+id/text4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/text3"
+        android:layout_marginLeft="8dp"
+        android:text="Jenis Kelamin"/>
+    <TextView
+        android:id="@+id/kelamin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="101dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/text3"
+        android:text=": Pria"/>
+    <TextView
+        android:id="@+id/text5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/text4"
+        android:layout_marginLeft="8dp"
+        android:text="Instansi"/>
+    <TextView
+        android:id="@+id/instansi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="101dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/text4"
+        android:text=": Fakultas Teknik Universitas Mataram"/>
+    <TextView
+        android:id="@+id/text6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/text5"
+        android:layout_marginLeft="8dp"
+        android:text="Telepon"/>
+    <TextView
+        android:id="@+id/telepon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="101dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/text5"
+        android:text=": (0370) 630000"/>
+    <TextView
+        android:id="@+id/text7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/text6"
+        android:layout_marginLeft="8dp"
+        android:text="E-mail"/>
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="101dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/text6"
+        android:text=": juruselang21@siaran.com"/>
 
-    </LinearLayout>
-
-
-</ScrollView>
+</RelativeLayout>
