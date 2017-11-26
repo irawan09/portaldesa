@@ -28,7 +28,7 @@
              android:layout_marginLeft="125dp"
              android:layout_marginTop="20dp"
              android:gravity="center_horizontal"
-             android:text="Kegiatan desa disini" />
+             android:text="Nama kegiatan desa disini" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -37,9 +37,9 @@
         android:id="@+id/layout2">
 
         <TextView
-            android:id="@+id/text1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
             android:text="Lokasi"/>
         <TextView
             android:id="@+id/lokasi"
@@ -55,19 +55,99 @@
         android:layout_below="@+id/layout2"
         android:id="@+id/layout3">
             <TextView
-                android:id="@+id/text2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:layout_marginTop="8dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginTop="2dp"
                 android:text="Kecamatan" />
             <TextView
                 android:id="@+id/kecamatan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="100dp"
-                android:layout_marginTop="8dp"
-                android:text=": Kecamatan Gunungsari"/>
+                android:layout_marginTop="2dp"
+                android:text=": Gunungsari"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout3"
+        android:id="@+id/layout4">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="6dp"
+                android:layout_marginTop="2dp"
+                android:text="Kabupaten"/>
+            <TextView
+                android:id="@+id/kabupaten"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="2dp"
+                android:text=": Lombok Barat"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout4"
+        android:id="@+id/layout5">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="2dp"
+            android:text="Provinsi"/>
+        <TextView
+            android:id="@+id/provinsi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="2dp"
+            android:text=": Nusa Tenggara Barat"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout5"
+        android:id="@+id/layout6">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="6dp"
+                android:layout_marginTop="16dp"
+                android:text="Penyedia"/>
+            <TextView
+                android:id="@+id/penyedia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="16dp"
+                android:text="PT. LA Elektronik"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout6">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="2dp"
+            android:text="Nilai Kontrak"/>
+        <TextView
+            android:id="@+id/nilai_kontrak"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="2dp"
+            android:text=": Rp. 1.000.000.000"/>
+
     </RelativeLayout>
 
 </RelativeLayout>

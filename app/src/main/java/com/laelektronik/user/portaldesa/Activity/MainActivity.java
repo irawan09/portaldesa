@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.laelektronik.user.portaldesa.Fragment.BeritaDesaFragment;
+import com.laelektronik.user.portaldesa.Fragment.BiodataFragment;
 import com.laelektronik.user.portaldesa.Fragment.KegiatanFragment;
 import com.laelektronik.user.portaldesa.Fragment.LokasiKegiatanFragment;
 import com.laelektronik.user.portaldesa.Fragment.PustakaDesaFragment;
@@ -145,7 +146,8 @@ public class MainActivity extends AppCompatActivity
             fragment = new LokasiKegiatanFragment();
             callFragment(fragment, item.getTitle().toString(), id, 5);
         } else if (id == R.id.nav_about) {
-
+            fragment = new BiodataFragment();
+            callFragment(fragment, item.getTitle().toString(), id, 6);
         } else if (id == R.id.nav_logout){
 
         }
