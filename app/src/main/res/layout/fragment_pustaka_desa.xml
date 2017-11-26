@@ -2,12 +2,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.laelektronik.user.portaldesa.Fragment.Pustaka_desa">
+    tools:context="com.laelektronik.user.portaldesa.Fragment.PustakaDesaFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:text="Ini Halaman Pustaka Desa" />
 
 </FrameLayout>

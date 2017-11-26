@@ -8,4 +8,66 @@
         android:layout_width="match_parent"
         android:layout_height="300dp" />
 
+    <RelativeLayout
+        android:id="@+id/layout1"
+        android:layout_width="wrap_content"
+        android:layout_height="133dp"
+        android:layout_below="@+id/maps">
+
+        <ImageView
+            android:id="@+id/gambar_kegiatan1"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/kemendes" />
+        <TextView
+            android:id="@+id/nama_kegiatan"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:layout_marginLeft="125dp"
+             android:layout_marginTop="20dp"
+             android:gravity="center_horizontal"
+             android:text="Kegiatan desa disini" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout1"
+        android:id="@+id/layout2">
+
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lokasi"/>
+        <TextView
+            android:id="@+id/lokasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:text=": Desa Gunungsari"/>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout2"
+        android:id="@+id/layout3">
+            <TextView
+                android:id="@+id/text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="8dp"
+                android:text="Kecamatan" />
+            <TextView
+                android:id="@+id/kecamatan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="8dp"
+                android:text=": Kecamatan Gunungsari"/>
+    </RelativeLayout>
+
 </RelativeLayout>
