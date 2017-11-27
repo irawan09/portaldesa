@@ -6,8 +6,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.laelektronik.user.portaldesa.Activity.MainActivity;
 import com.laelektronik.user.portaldesa.R;
@@ -50,6 +52,21 @@ public class BeritaDesaFragment extends Fragment {
         //membentuk menu dari package menu
         inflater.inflate(R.menu.search, menu);
         return;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.search) {
+            Toast.makeText(getContext(), "SEARCH", Toast.LENGTH_LONG).show();
+            return true;
+        }
+
+        return onOptionsItemSelected(item);
     }
 
 }
