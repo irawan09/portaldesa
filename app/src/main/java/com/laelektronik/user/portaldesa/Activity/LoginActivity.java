@@ -49,7 +49,6 @@ public class LoginActivity extends AppCompatActivity {
 
                 // mengecek kolom yang kosong
                 if (username.trim().length() > 0 && password.trim().length() > 0) {
-                    Toast.makeText(getApplicationContext() ,"SELAMAT DATANG", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     intent.putExtra("namauser", username);
                     startActivity(intent);
