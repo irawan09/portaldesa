@@ -24,7 +24,7 @@ public class BiodataFragment extends Fragment {
     String username;
 
     ImageView imageView;
-    TextView namauser, nama, lahir, alamat, kelamin, instansi, telepon, email;
+    TextView namauser, lahir, alamat, kelamin, instansi, telepon, email;
 
     public BiodataFragment() {
         // Required empty public constructor
