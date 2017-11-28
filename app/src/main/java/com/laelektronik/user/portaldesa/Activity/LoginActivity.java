@@ -1,9 +1,10 @@
 package com.laelektronik.user.portaldesa.Activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,9 +15,15 @@ import com.laelektronik.user.portaldesa.R;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private static final String TAG = "LoginActivity";
+    private static final int REQUEST_SIGNUP = 0;
+
     private EditText nama, pass;
     private TextView daftar;
     private Button masuk;
+
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +36,15 @@ public class LoginActivity extends AppCompatActivity {
         daftar = (TextView) findViewById(R.id.daftar);
         masuk = (Button) findViewById(R.id.submit1);
 
-        pass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+        //setting sharedpreferences untuk autologin
+        preferences = getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
+        boolean otoritas =preferences.getBoolean("otoritas", false);
+        if (otoritas){
+
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
         daftar.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
@@ -49,9 +64,14 @@ public class LoginActivity extends AppCompatActivity {
 
                 // mengecek kolom yang kosong
                 if (username.trim().length() > 0 && password.trim().length() > 0) {
+                    editor = preferences.edit();
+                    editor.putString("username", username);
+                    editor.putBoolean("otoritas", true);
+                    editor.commit();
+
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    intent.putExtra("namauser", username);
                     startActivity(intent);
+                    finish();
                 } else {
                     // Prompt user to enter credentials
                     Toast.makeText(getApplicationContext() ,"Kolom tidak boleh kosong", Toast.LENGTH_LONG).show();
@@ -59,4 +79,5 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
 }

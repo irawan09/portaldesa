@@ -1,6 +1,8 @@
 package com.laelektronik.user.portaldesa.Fragment;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -19,6 +21,9 @@ import com.laelektronik.user.portaldesa.R;
  */
 public class BeritaDesaFragment extends Fragment {
 
+    SharedPreferences preferences;
+    String username;
+
 
     public BeritaDesaFragment() {
         // Required empty public constructor
@@ -36,6 +41,9 @@ public class BeritaDesaFragment extends Fragment {
 
         ((MainActivity) getActivity()).setTitleActionBar(pesan);
 //        ((MainActivity) getActivity()).setSelectedItem(id);
+
+        preferences = getActivity().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
+        String username = preferences.getString("username", null);
 
         // Inflate the layout for this fragment \
         return rootView;
