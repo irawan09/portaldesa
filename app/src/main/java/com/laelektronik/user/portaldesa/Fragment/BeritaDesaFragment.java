@@ -40,7 +40,7 @@ public class BeritaDesaFragment extends Fragment {
         final int id = getArguments().getInt("id");
 
         ((MainActivity) getActivity()).setTitleActionBar(pesan);
-//        ((MainActivity) getActivity()).setSelectedItem(id);
+        ((MainActivity) getActivity()).setSelectedItem(id);
 
         preferences = getActivity().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
         String username = preferences.getString("username", null);

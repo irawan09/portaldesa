@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -51,7 +52,6 @@ public class MainActivity extends AppCompatActivity
         toolbar.setNavigationIcon(R.drawable.ic_search_white_24dp);
         setSupportActionBar(toolbar);
 
-
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         navHeader = navigationView.getHeaderView(0);
@@ -75,11 +75,11 @@ public class MainActivity extends AppCompatActivity
 
         if (savedInstanceState == null) {
            fragment = new BeritaDesaFragment();
-           MenuItem menu = navigationView.getMenu().findItem(R.id.home);
+           MenuItem menu = navigationView.getMenu().findItem(R.id.nav_berita);
 
            Bundle bundle = new Bundle();
            bundle.putString("pesan", "Kabar Desa");
-//           bundle.putInt("id", menu.getItemId());
+           bundle.putInt("id", menu.getItemId());
 
            fragment.setArguments(bundle);
 
