@@ -25,7 +25,7 @@
             android:layout_below="@+id/imageView"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="32dp"
-            android:text="Kedebong Pisang" />
+            android:text="Ary Kurniadi Irawan" />
 
         <TextView
             android:id="@+id/jabatan"
@@ -37,38 +37,22 @@
             android:text="Kepala Desa" />
     </RelativeLayout>
     <TextView
-        android:id="@+id/text1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/relativeLayout"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Nama" />
-    <TextView
-        android:id="@+id/nama"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="101dp"
-        android:layout_marginTop="8dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/relativeLayout"
-        android:text=": Ary Kurniadi Irawan"/>
-    <TextView
         android:id="@+id/text2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/text1"
+        android:layout_below="@+id/relativeLayout"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:text="Tanggal Lahir"/>
     <TextView
         android:id="@+id/lahir"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="101dp"
+        android:layout_marginTop="8dp"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/text1"
+        android:layout_below="@+id/relativeLayout"
         android:text=": 1600 SM"/>
     <TextView
         android:id="@+id/text3"

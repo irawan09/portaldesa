@@ -45,7 +45,6 @@ public class BiodataFragment extends Fragment {
 
         imageView = (ImageView) rootView.findViewById(R.id.imageView);
         namauser = (TextView) rootView.findViewById(R.id.namauser2);
-        nama = (TextView) rootView.findViewById(R.id.nama);
         lahir = (TextView) rootView.findViewById(R.id.lahir);
         alamat = (TextView) rootView.findViewById(R.id.alamat);
         kelamin = (TextView) rootView.findViewById(R.id.kelamin);
