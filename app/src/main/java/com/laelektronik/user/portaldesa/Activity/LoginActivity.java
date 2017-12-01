@@ -64,6 +64,8 @@ public class LoginActivity extends AppCompatActivity {
 
                 // mengecek kolom yang kosong
                 if (username.trim().length() > 0 && password.trim().length() > 0) {
+
+
                     editor = preferences.edit();
                     editor.putString("username", username);
                     editor.putBoolean("otoritas", true);

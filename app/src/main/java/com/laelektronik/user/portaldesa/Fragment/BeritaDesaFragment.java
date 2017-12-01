@@ -89,7 +89,6 @@ public class BeritaDesaFragment extends Fragment {
 
 
                                 // Write your code here to invoke YES event
-
                             }
                         });
 
