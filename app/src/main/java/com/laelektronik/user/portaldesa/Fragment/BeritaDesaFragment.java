@@ -86,8 +86,6 @@ public class BeritaDesaFragment extends Fragment {
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog,
                                                 int which) {
-
-
                                 // Write your code here to invoke YES event
                             }
                         });
@@ -99,14 +97,9 @@ public class BeritaDesaFragment extends Fragment {
                                 // Canceled.
                             }
                         });
-
                 alert.show();
-
-
             return true;
         }
-
         return onOptionsItemSelected(item);
     }
-
 }
