@@ -51,6 +51,7 @@ public class BiodataFragment extends Fragment {
         telepon = (TextView) rootView.findViewById(R.id.telepon);
         email = (TextView) rootView.findViewById(R.id.email);
 
+        //mengeset username pada fragment biodata
         preferences = getActivity().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
         username = preferences.getString("username", null);
         namauser.setText(username);

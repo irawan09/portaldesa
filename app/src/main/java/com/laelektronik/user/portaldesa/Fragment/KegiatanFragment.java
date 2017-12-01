@@ -1,6 +1,8 @@
 package com.laelektronik.user.portaldesa.Fragment;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,10 +12,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.XAxis;
@@ -149,11 +151,34 @@ public class KegiatanFragment extends Fragment {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.search) {
-            Toast.makeText(getContext() ,"SEARCH", Toast.LENGTH_LONG).show();
+            AlertDialog.Builder alert = new AlertDialog.Builder(
+                    getContext());
+
+            alert.setTitle("Cari Kegiatan");
+
+            // Set an EditText view to get user input
+            final EditText txtcari = new EditText(getContext());
+            alert.setView(txtcari);
+            txtcari.isFocusable();
+            alert.setPositiveButton("Cari",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,
+                                            int which) {
+
+
+                        }
+                    });
+
+            alert.setNegativeButton("Batal",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,
+                                            int whichButton) {
+                            // Canceled.
+                        }
+                    });
+            alert.show();
             return true;
         }
-
         return onOptionsItemSelected(item);
     }
-
 }

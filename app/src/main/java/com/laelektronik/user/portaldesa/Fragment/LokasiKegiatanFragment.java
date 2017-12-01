@@ -11,8 +11,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
-
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -49,8 +47,6 @@ public class LokasiKegiatanFragment extends Fragment {
 
         ((MainActivity) getActivity()).setTitleActionBar(pesan);
         ((MainActivity) getActivity()).setSelectedItem(id);
-
-
 
         mMapView = (MapView) rootView.findViewById(R.id.maps);
         mMapView.onCreate(savedInstanceState);
@@ -140,8 +136,6 @@ public class LokasiKegiatanFragment extends Fragment {
             startActivity(Intent.createChooser(intent, "Pilih metode pembagian tautan"));
             return true;
         }
-
         return onOptionsItemSelected(item);
     }
-
 }

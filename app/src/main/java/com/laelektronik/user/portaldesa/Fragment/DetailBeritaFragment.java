@@ -66,7 +66,7 @@ public class DetailBeritaFragment extends Fragment {
             String shareBodyText = "https://developer.android.com/training/sharing/shareaction.html";
             intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject/Title");
             intent.putExtra(android.content.Intent.EXTRA_TEXT, shareBodyText);
-            startActivity(Intent.createChooser(intent, "Pilih metode pembagian tautan"));
+            startActivity(Intent.createChooser(intent, "Pilih cara pembagian tautan"));
             return true;
         }
 

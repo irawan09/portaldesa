@@ -18,7 +18,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-
 import com.laelektronik.user.portaldesa.Fragment.BeritaDesaFragment;
 import com.laelektronik.user.portaldesa.Fragment.BiodataFragment;
 import com.laelektronik.user.portaldesa.Fragment.KegiatanFragment;

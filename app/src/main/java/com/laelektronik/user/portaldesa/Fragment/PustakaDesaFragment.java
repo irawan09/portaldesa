@@ -1,6 +1,8 @@
 package com.laelektronik.user.portaldesa.Fragment;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,7 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.EditText;
 
 import com.laelektronik.user.portaldesa.Activity.MainActivity;
 import com.laelektronik.user.portaldesa.R;
@@ -61,7 +63,35 @@ public class PustakaDesaFragment extends Fragment {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.search) {
-            Toast.makeText(getContext() ,"SEARCH", Toast.LENGTH_LONG).show();
+            AlertDialog.Builder alert = new AlertDialog.Builder(
+                    getContext());
+
+            alert.setTitle("Cari Berita");
+
+            // Set an EditText view to get user input
+            final EditText txtcari = new EditText(getContext());
+            alert.setView(txtcari);
+            txtcari.isFocusable();
+            alert.setPositiveButton("Cari",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,
+                                            int which) {
+
+
+                            // Write your code here to invoke YES event
+
+                        }
+                    });
+
+            alert.setNegativeButton("Batal",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,
+                                            int whichButton) {
+                            // Canceled.
+                        }
+                    });
+
+            alert.show();
             return true;
         }
 
