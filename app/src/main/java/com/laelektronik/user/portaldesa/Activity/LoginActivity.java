@@ -11,12 +11,24 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.Volley;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.AuthFailureError;
 import com.laelektronik.user.portaldesa.R;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
+
+    String server_url = "http://192.168.1.100/api/login.php";
 
     private EditText nama, pass;
     private TextView daftar;
@@ -64,8 +76,39 @@ public class LoginActivity extends AppCompatActivity {
 
                 // mengecek kolom yang kosong
                 if (username.trim().length() > 0 && password.trim().length() > 0) {
+                 /*   final RequestQueue requestQueue = Volley.newRequestQueue(LoginActivity.this);
+                    final String Username, Password;
 
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, server_url,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    if(response.equals("1")) {
+                                        Toast.makeText(MainActivity.this, "Login success ...", Toast.LENGTH_LONG).show();
+                                    } else {
+                                        Toast.makeText(MainActivity.this, response + "Invalid username or password ...", Toast.LENGTH_LONG).show();
+                                    }
+                                    requestQueue.stop();
+                                }
+                            }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(MainActivity.this, "Error ...", Toast.LENGTH_LONG).show();
+                            error.printStackTrace();
+                            requestQueue.stop();
+                        }
+                    }){
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError{
+                            Map<String, String> params = new HashMap<String, String>();
+                            params.put("username", username);
+                            params.put("password", password);
+                            return params;
+                        }
 
+                    };
+                    requestQueue.add(stringRequest); */
+                    //setting shared preferences
                     editor = preferences.edit();
                     editor.putString("username", username);
                     editor.putBoolean("otoritas", true);
