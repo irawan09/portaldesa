@@ -1,8 +1,10 @@
 package com.laelektronik.user.portaldesa.Fragment;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -52,11 +55,36 @@ public class YouTubeFragment extends Fragment {
         ((MainActivity) getActivity()).setSelectedItem(id);
 
         youtube = (WebView) rootView.findViewById(R.id.YouTubeWeb);
+
         youtube.loadUrl(url);
+
+        final ProgressDialog progress = ProgressDialog.show(getActivity(), "", "Tunggu sebentar...", true);
 
         WebSettings webSettings = youtube.getSettings();
         webSettings.setJavaScriptEnabled(true);
         youtube.setWebViewClient(new MyWebViewClient());
+
+        youtube.setWebViewClient(new WebViewClient() {
+            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+                Toast.makeText(getActivity(), description, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon)
+            {
+                progress.show();
+            }
+
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                progress.dismiss();
+
+                String webUrl = youtube.getUrl();
+
+            }
+
+        });
 
         // Inflate the layout for this fragment
         return rootView;
