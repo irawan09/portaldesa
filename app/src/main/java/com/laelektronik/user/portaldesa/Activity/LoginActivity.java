@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
 
         //setting sharedpreferences untuk autologin
         preferences = getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
-        boolean otoritas =preferences.getBoolean("otoritas", false);
+        boolean otoritas = preferences.getBoolean("otoritas", false);
         if (otoritas){
 
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -108,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     };
                     requestQueue.add(stringRequest); */
-                    //setting shared preferences
+                    //setting data shared preferences
                     editor = preferences.edit();
                     editor.putString("username", username);
                     editor.putBoolean("otoritas", true);

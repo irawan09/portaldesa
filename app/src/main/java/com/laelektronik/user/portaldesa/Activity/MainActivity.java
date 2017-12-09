@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -23,7 +22,7 @@ import com.laelektronik.user.portaldesa.Fragment.BiodataFragment;
 import com.laelektronik.user.portaldesa.Fragment.KegiatanFragment;
 import com.laelektronik.user.portaldesa.Fragment.LokasiKegiatanFragment;
 import com.laelektronik.user.portaldesa.Fragment.PustakaDesaFragment;
-import com.laelektronik.user.portaldesa.Fragment.VideoFragment;
+import com.laelektronik.user.portaldesa.Fragment.YouTubeFragment;
 import com.laelektronik.user.portaldesa.R;
 
 public class MainActivity extends AppCompatActivity
@@ -107,7 +106,7 @@ public class MainActivity extends AppCompatActivity
             fragment = new BeritaDesaFragment();
             callFragment(fragment, item.getTitle().toString(),id,1);
         } else if (id == R.id.nav_video) {
-            fragment = new VideoFragment();
+            fragment = new YouTubeFragment();
             callFragment(fragment, item.getTitle().toString(), id, 2);
         } else if (id == R.id.nav_pustaka) {
             fragment = new PustakaDesaFragment();

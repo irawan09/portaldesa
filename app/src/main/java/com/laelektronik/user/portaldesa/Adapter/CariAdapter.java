@@ -55,8 +55,8 @@ public class CariAdapter extends RecyclerView.Adapter<CariAdapter.MyViewHolder>{
             super(itemView);
 
             image = (ImageView) itemView.findViewById(R.id.image_list);
-            title = (TextView) itemView.findViewById(R.id.title_list);
-            posts_list = (LinearLayout) itemView.findViewById(R.id.posts_list);
+            title = (TextView) itemView.findViewById(R.id.cari_list);
+            posts_list = (LinearLayout) itemView.findViewById(R.id.cari_layout);
         }
     }
 }
