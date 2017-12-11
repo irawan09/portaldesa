@@ -34,7 +34,7 @@ public class YouTubeFragment extends Fragment {
 
     WebView youtube;
     ProgressBar pb;
-    String url = "https://www.youtube.com/user/JonasBlueVEVO/videos";
+    String url = "https://www.youtube.com/channel/UC8kG1TQahqGs5m_KwPkrGcw";
 
 
     public YouTubeFragment() {
@@ -161,7 +161,7 @@ public class YouTubeFragment extends Fragment {
                 startActivity(i);
             }
             else {
-                Toast.makeText(getContext(), "Segara install aplikasi YouTube", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Segera install aplikasi YouTube", Toast.LENGTH_SHORT).show();
             }
             return true;
         }
