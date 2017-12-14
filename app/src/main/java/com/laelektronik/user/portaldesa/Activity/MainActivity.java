@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity
            MenuItem menu = navigationView.getMenu().findItem(R.id.nav_berita);
 
            Bundle bundle = new Bundle();
-           bundle.putString("pesan", "Kabar Desa");
+           bundle.putString("pesan", "Kabar Sarpras");
            bundle.putInt("id", menu.getItemId());
 
            fragment.setArguments(bundle);

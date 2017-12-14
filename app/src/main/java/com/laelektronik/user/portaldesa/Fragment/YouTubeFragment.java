@@ -1,13 +1,15 @@
 package com.laelektronik.user.portaldesa.Fragment;
 
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,17 +17,27 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.laelektronik.user.portaldesa.WebViewClient.MyWebViewClient;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.laelektronik.user.portaldesa.Adapter.VideoAdapter;
+import com.laelektronik.user.portaldesa.Controller.AppController;
+import com.laelektronik.user.portaldesa.Util.MyVideo;
 import com.laelektronik.user.portaldesa.Activity.MainActivity;
 import com.laelektronik.user.portaldesa.R;
 
-import java.lang.reflect.InvocationTargetException;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.laelektronik.user.portaldesa.Controller.AppController.TAG;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,7 +46,11 @@ public class YouTubeFragment extends Fragment {
 
     WebView youtube;
     ProgressBar pb;
-    String url = "https://www.youtube.com/channel/UC8kG1TQahqGs5m_KwPkrGcw";
+    private static final String url = "http://sarpras.laelektronik.com/api/video/";
+    List<MyVideo> VideoList = new ArrayList<>();
+    VideoAdapter adapter;
+    RecyclerView recyclerView;
+
 
 
     public YouTubeFragment() {
@@ -54,37 +70,16 @@ public class YouTubeFragment extends Fragment {
         ((MainActivity) getActivity()).setTitleActionBar(pesan);
         ((MainActivity) getActivity()).setSelectedItem(id);
 
-        youtube = (WebView) rootView.findViewById(R.id.YouTubeWeb);
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.video_list);
 
-        youtube.loadUrl(url);
+        adapter = new VideoAdapter(VideoList, getContext());
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(adapter);
 
-        final ProgressDialog progress = ProgressDialog.show(getActivity(), "", "Tunggu sebentar...", true);
+        fetchContent();
 
-        WebSettings webSettings = youtube.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-        youtube.setWebViewClient(new MyWebViewClient());
-
-        youtube.setWebViewClient(new WebViewClient() {
-            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
-                Toast.makeText(getActivity(), description, Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onPageStarted(WebView view, String url, Bitmap favicon)
-            {
-                progress.show();
-            }
-
-
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                progress.dismiss();
-
-                String webUrl = youtube.getUrl();
-
-            }
-
-        });
 
         // Inflate the layout for this fragment
         return rootView;
@@ -106,37 +101,7 @@ public class YouTubeFragment extends Fragment {
         return onKeyDown(keyCode, event);
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
 
-        try {
-            Class.forName("android.webkit.WebView")
-                    .getMethod("onPause", (Class[]) null)
-                    .invoke(youtube, (Object[]) null);
-
-        } catch(ClassNotFoundException cnfe) {
-
-        } catch(NoSuchMethodException nsme) {
-
-        } catch(InvocationTargetException ite) {
-
-        } catch (IllegalAccessException iae) {
-
-        }
-    }
-
-    private boolean isInstalled(String uri){
-        PackageManager pm = getActivity().getPackageManager();
-        boolean isIn;
-        try{
-            pm.getPackageInfo(uri,PackageManager.GET_ACTIVITIES);
-            isIn=true;
-        }catch(PackageManager.NameNotFoundException e){
-            isIn=false;
-        }
-        return isIn;
-    }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
@@ -154,18 +119,47 @@ public class YouTubeFragment extends Fragment {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.fullscreen) {
-            boolean isAppExists = false;
-            isAppExists = isInstalled("com.google.android.youtube");
-            if(isAppExists=true) {
-                Intent i = new Intent("android.intent.action.VIEW", Uri.parse(url));
-                startActivity(i);
-            }
-            else {
-                Toast.makeText(getContext(), "Segera install aplikasi YouTube", Toast.LENGTH_SHORT).show();
-            }
-            return true;
+
         }
 
         return onOptionsItemSelected(item);
+    }
+
+    private void fetchContent() {
+
+        JsonArrayRequest request = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                VideoList.clear();
+                Log.d(TAG, response.toString());
+                for (int i = 0; i < response.length(); i++) {
+                    try {
+
+                        JSONObject object = response.getJSONObject(i);
+                        MyVideo video = new MyVideo();
+                        video.setThumbnails(object.getString("thumbnails"));
+                        video.setTittle(object.getString("title"));
+                        video.setVideoId(object.getString("videoId"));
+                        video.setTanggal(object.getString("publishedAt"));
+
+                        VideoList.add(video);
+                        adapter.notifyDataSetChanged();
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                Log.e("cek", VideoList+"");
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        AppController.getInstance().addToRequestQueue(request);
     }
 }
