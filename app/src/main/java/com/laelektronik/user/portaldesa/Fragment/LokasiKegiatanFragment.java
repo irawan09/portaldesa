@@ -1,8 +1,11 @@
 package com.laelektronik.user.portaldesa.Fragment;
 
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -64,6 +67,9 @@ public class LokasiKegiatanFragment extends Fragment {
                 googleMap = mMap;
 
                 // For showing a move to my location button
+                if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
                 googleMap.setMyLocationEnabled(true);
 
                 // For dropping a marker at a point on the Map
