@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.laelektronik.user.portaldesa.Fragment.BeritaDesaFragment;
 import com.laelektronik.user.portaldesa.Fragment.BiodataFragment;
+import com.laelektronik.user.portaldesa.Fragment.HomeFragment;
 import com.laelektronik.user.portaldesa.Fragment.KegiatanFragment;
 import com.laelektronik.user.portaldesa.Fragment.LokasiKegiatanFragment;
 import com.laelektronik.user.portaldesa.Fragment.PustakaDesaFragment;
@@ -72,8 +73,8 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         if (savedInstanceState == null) {
-           fragment = new BeritaDesaFragment();
-           MenuItem menu = navigationView.getMenu().findItem(R.id.nav_berita);
+           fragment = new HomeFragment();
+           MenuItem menu = navigationView.getMenu().findItem(R.id.nav_home);
 
            Bundle bundle = new Bundle();
            bundle.putString("pesan", "Kabar Sarpras");
@@ -102,7 +103,10 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_berita) {
+        if (id == R.id.nav_home) {
+            fragment = new HomeFragment();
+            callFragment(fragment, item.getTitle().toString(),id,1);
+        } else if (id == R.id.nav_berita) {
             fragment = new BeritaDesaFragment();
             callFragment(fragment, item.getTitle().toString(),id,1);
         } else if (id == R.id.nav_video) {
