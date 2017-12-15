@@ -4,11 +4,13 @@
     android:layout_height="match_parent"
     tools:context="com.laelektronik.user.portaldesa.Fragment.BeritaDesaFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/post"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:text="Ini Halaman Home" />
+        android:padding="8dp"
+        android:clipToPadding="false">
+
+    </android.support.v7.widget.RecyclerView>
 
 </FrameLayout>

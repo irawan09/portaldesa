@@ -4,21 +4,32 @@ package com.laelektronik.user.portaldesa.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
+import android.text.Spanned;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.laelektronik.user.portaldesa.Activity.MainActivity;
 import com.laelektronik.user.portaldesa.R;
+import com.laelektronik.user.portaldesa.Util.Post;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class DetailBeritaFragment extends Fragment {
 
+    Post post;
+    ImageView featured_iamge;
+    TextView titel, published, content;
 
     public DetailBeritaFragment() {
         // Required empty public constructor
@@ -30,11 +41,31 @@ public class DetailBeritaFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_detail__berita, container, false);
 
-        String pesan = getArguments().getString("pesan");
-        final int id = getArguments().getInt("id");
+        featured_iamge = (ImageView) rootView.findViewById(R.id.featured_image_detail);
+        titel = (TextView) rootView.findViewById(R.id.title_detail);
+        published = (TextView) rootView.findViewById(R.id.published_detail);
+        content = (TextView) rootView.findViewById(R.id.content_detail);
 
-        ((MainActivity) getActivity()).setTitleActionBar(pesan);
-        ((MainActivity) getActivity()).setSelectedItem(id);
+        //String pesan = getArguments().getString("pesan");
+        //final int id = getArguments().getInt("id");
+        post = (Post) getArguments().getSerializable("post");
+        Log.e("post", post.getTitlePost());
+
+        //((MainActivity) getActivity()).setTitleActionBar(pesan);
+        //((MainActivity) getActivity()).setSelectedItem(id);
+
+        Glide.with(getContext())
+                .load(post.getImgUrl())
+                .thumbnail(0.5f)
+                .crossFade()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(featured_iamge);
+
+        titel.setText(post.getTitlePost());
+        published.setText("Berita Desa, "+post.getDate());
+
+        Spanned spanned = Html.fromHtml(post.getPost(), null, null);
+        content.setText(spanned);
 
         // Inflate the layout for this fragment
         return rootView;
