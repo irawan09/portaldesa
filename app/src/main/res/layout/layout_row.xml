@@ -10,26 +10,26 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:background="@drawable/table_shape"
-        android:textSize="7dp"/>
+        android:textSize="10dp"/>
     <TextView
         android:id="@+id/lokasi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:background="@drawable/table_shape"
-        android:textSize="7dp" />
+        android:textSize="10dp" />
     <TextView
         android:id="@+id/penyedia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:background="@drawable/table_shape"
-        android:textSize="7dp" />
+        android:textSize="10dp" />
     <TextView
         android:id="@+id/nilai_kontrak"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:background="@drawable/table_shape"
-        android:textSize="7dp" />
+        android:textSize="10dp" />
 </TableRow>

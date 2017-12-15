@@ -5,6 +5,10 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -13,14 +17,35 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.laelektronik.user.portaldesa.Activity.MainActivity;
+import com.laelektronik.user.portaldesa.Adapter.PDFReaderAdapter;
+import com.laelektronik.user.portaldesa.Adapter.VideoAdapter;
+import com.laelektronik.user.portaldesa.Controller.AppController;
 import com.laelektronik.user.portaldesa.R;
+import com.laelektronik.user.portaldesa.Util.MyPDF;
+import com.laelektronik.user.portaldesa.Util.MyVideo;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.laelektronik.user.portaldesa.Controller.AppController.TAG;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class PustakaDesaFragment extends Fragment {
 
+    private static final String url = "http://sarpras.laelektronik.com/api/post/pustaka";
+    List<MyPDF> PDFList = new ArrayList<>();
+    PDFReaderAdapter adapter;
+    RecyclerView recyclerView;
 
     public PustakaDesaFragment() {
         // Required empty public constructor
@@ -36,6 +61,16 @@ public class PustakaDesaFragment extends Fragment {
 
         ((MainActivity) getActivity()).setTitleActionBar(pesan);
         ((MainActivity) getActivity()).setSelectedItem(id);
+
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.pdf_list);
+
+        adapter = new PDFReaderAdapter(PDFList, getContext());
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(adapter);
+
+        fetchContent();
 
         // Inflate the layout for this fragment
         return rootView;
@@ -77,7 +112,6 @@ public class PustakaDesaFragment extends Fragment {
                         public void onClick(DialogInterface dialog,
                                             int which) {
 
-
                             // Write your code here to invoke YES event
 
                         }
@@ -96,6 +130,44 @@ public class PustakaDesaFragment extends Fragment {
         }
 
         return onOptionsItemSelected(item);
+    }
+
+    private void fetchContent() {
+
+        JsonArrayRequest request = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                PDFList.clear();
+                Log.d(TAG, response.toString());
+
+                    try {
+                        JSONObject object = response.getJSONObject(0);
+                        JSONArray jsonArray = object.getJSONArray("post");
+
+                        for (int i=0; i<jsonArray.length(); i++ ){
+                            JSONObject objectpdf = jsonArray.getJSONObject(i);
+                            MyPDF pdf = new MyPDF();
+                            pdf.setThumbnails(objectpdf.getString("feature_image"));
+                            pdf.setTittle(objectpdf.getString("title_post"));
+                            pdf.setUrl(objectpdf.getString("file"));
+                            pdf.setTanggal(objectpdf.getString("tgl_post"));
+
+                            PDFList.add(pdf);
+                            adapter.notifyDataSetChanged();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        });
+
+        AppController.getInstance().addToRequestQueue(request);
     }
 
 }

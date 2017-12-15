@@ -1,9 +1,6 @@
 package com.laelektronik.user.portaldesa.Fragment;
 
 
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -19,7 +16,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -80,7 +76,6 @@ public class YouTubeFragment extends Fragment {
 
         fetchContent();
 
-
         // Inflate the layout for this fragment
         return rootView;
     }
@@ -105,8 +100,6 @@ public class YouTubeFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
-        //membentuk menu dari package menu
-        inflater.inflate(R.menu.fullscreen, menu);
         return;
     }
 
@@ -118,10 +111,6 @@ public class YouTubeFragment extends Fragment {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.fullscreen) {
-
-        }
-
         return onOptionsItemSelected(item);
     }
 
@@ -149,8 +138,6 @@ public class YouTubeFragment extends Fragment {
                         e.printStackTrace();
                     }
                 }
-
-                Log.e("cek", VideoList+"");
 
             }
         }, new Response.ErrorListener() {

@@ -15,7 +15,7 @@
         android:background="#f7ff00"
         android:padding="5dp">
             <TextView
-                android:layout_width="125dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/table_shape"
                 android:layout_weight="1"
@@ -41,12 +41,5 @@
         </TableRow>
 
     </TableLayout>
-
-    <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/chart"
-        android:layout_width="400dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="32dp"
-        android:layout_below="@+id/tablelayoutid"/>
 
 </RelativeLayout>
