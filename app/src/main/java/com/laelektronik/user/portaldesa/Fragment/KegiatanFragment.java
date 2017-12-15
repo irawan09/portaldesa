@@ -1,12 +1,12 @@
 package com.laelektronik.user.portaldesa.Fragment;
 
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -18,17 +18,17 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.laelektronik.user.portaldesa.Activity.BarchartActivity;
 import com.laelektronik.user.portaldesa.Activity.MainActivity;
 import com.laelektronik.user.portaldesa.R;
-
-import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class KegiatanFragment extends Fragment {
 
+    private FragmentManager fragmentManager;
+    Fragment fragment = null;
+    FragmentTransaction fragmentTransaction;
 
     public KegiatanFragment() {
         // Required empty public constructor
@@ -115,11 +115,25 @@ public class KegiatanFragment extends Fragment {
 
         if (id==R.id.barchart){
 
-            Intent intent = new Intent(getActivity(), BarchartActivity.class);
-            startActivity(intent);
-            ((Activity) getActivity()).overridePendingTransition(0,0);
+            fragment = new BarchartFragment();
+            callFragment(fragment, item.getTitle().toString(), id, 3);
             return true;
         }
         return onOptionsItemSelected(item);
     }
+
+    public void callFragment(Fragment fragment, String s, int id, int i) {
+        //Menyisipkan bundle untuk mengeset tiap activity fragment yang dipanggil
+        Bundle bundle = new Bundle();
+        bundle.putString("pesan", s);
+        bundle.putInt("id", id);
+        bundle.putInt("category", i);
+        fragment.setArguments(bundle);
+        fragmentManager = getActivity().getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame_container, fragment)
+                .addToBackStack(null)
+                .commit();
+    }
+
 }

@@ -1,7 +1,13 @@
-package com.laelektronik.user.portaldesa.Activity;
+package com.laelektronik.user.portaldesa.Fragment;
 
-import android.app.Activity;
+
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.XAxis;
@@ -9,18 +15,33 @@ import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.laelektronik.user.portaldesa.Activity.MainActivity;
 import com.laelektronik.user.portaldesa.R;
 
 import java.util.ArrayList;
 
-public class BarchartActivity extends Activity {
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class BarchartFragment extends Fragment {
+
+    private FragmentManager fragmentManager;
+    Fragment fragment = null;
+    FragmentTransaction fragmentTransaction;
+
+    public BarchartFragment() {
+        // Required empty public constructor
+    }
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_barchart);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_barchart, container, false);
 
-        BarChart chart = (BarChart) findViewById(R.id.chart);
+        ((MainActivity) getActivity()).setTitleActionBar("Barchart");
+
+        BarChart chart = (BarChart) rootView.findViewById(R.id.chart);
 
         BarData data = new BarData(getXAxisValues(), getDataSet());
         chart.setData(data);
@@ -32,6 +53,8 @@ public class BarchartActivity extends Activity {
         chart.setVisibleXRange(10);
         chart.invalidate();
 
+        // Inflate the layout for this fragment
+        return rootView;
     }
 
     private ArrayList<BarDataSet> getDataSet() {
@@ -65,4 +88,10 @@ public class BarchartActivity extends Activity {
 
         return xAxis;
     }
+
+
+
+
+
+
 }
