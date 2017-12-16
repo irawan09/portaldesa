@@ -1,6 +1,7 @@
 package com.laelektronik.user.portaldesa.Fragment;
 
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -70,12 +71,14 @@ public class HomeFragment extends Fragment {
     }
 
     private void fetchContent() {
+        final ProgressDialog loading;
+        loading = ProgressDialog.show(getContext(), "Mendownload Data", "Tunggu...",false,false);
         JsonArrayRequest request = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 //Log.e(TAG, response.toString());
                 beritaList.clear();
-
+                loading.dismiss();
 
                 try {
 

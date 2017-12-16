@@ -1,6 +1,7 @@
 package com.laelektronik.user.portaldesa.Fragment;
 
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -115,15 +116,16 @@ public class YouTubeFragment extends Fragment {
     }
 
     private void fetchContent() {
-
+        final ProgressDialog loading;
+        loading = ProgressDialog.show(getContext(), "Mendownload Data", "Tunggu...",false,false);
         JsonArrayRequest request = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 VideoList.clear();
+                loading.dismiss();
                 Log.d(TAG, response.toString());
                 for (int i = 0; i < response.length(); i++) {
                     try {
-
                         JSONObject object = response.getJSONObject(i);
                         MyVideo video = new MyVideo();
                         video.setThumbnails(object.getString("thumbnails"));

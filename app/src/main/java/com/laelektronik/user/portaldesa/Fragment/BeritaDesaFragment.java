@@ -2,6 +2,7 @@ package com.laelektronik.user.portaldesa.Fragment;
 
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -139,11 +140,16 @@ public class BeritaDesaFragment extends Fragment {
     }
 
     private void fetchContent() {
+        final ProgressDialog loading;
+        loading = ProgressDialog.show(getContext(), "Mendownload Data", "Tunggu...",false,false);
+
         JsonArrayRequest request = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 Log.e(TAG, response.toString());
                 listberita.clear();
+
+                loading.dismiss();
 
                 try {
                     JSONObject jsonObject = response.getJSONObject(0);
