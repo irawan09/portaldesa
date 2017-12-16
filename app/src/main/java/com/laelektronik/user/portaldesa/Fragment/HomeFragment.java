@@ -9,14 +9,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.laelektronik.user.portaldesa.Activity.MainActivity;
 import com.laelektronik.user.portaldesa.Adapter.HomePostAdapter;
+import com.laelektronik.user.portaldesa.Adapter.HomeVideoAdapter;
 import com.laelektronik.user.portaldesa.Controller.AppController;
 import com.laelektronik.user.portaldesa.R;
+import com.laelektronik.user.portaldesa.Util.MyVideo;
 import com.laelektronik.user.portaldesa.Util.Post;
 
 import org.json.JSONArray;
@@ -35,10 +38,15 @@ public class HomeFragment extends Fragment {
     String url = "http://sarpras.laelektronik.com/api/home";
 
     List<Post> beritaList = new ArrayList<>();
-    List<Post> pustakaList = new ArrayList<>();
+    List<MyVideo> videoList = new ArrayList<>();
 
     RecyclerView recyclerViewBerita;
     HomePostAdapter adapter;
+
+    RecyclerView recyclerViewVideo;
+    HomeVideoAdapter videoAdapter;
+
+    TextView semuaBerita, semuaVideo;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -57,14 +65,40 @@ public class HomeFragment extends Fragment {
         ((MainActivity) getActivity()).setTitleActionBar("Home");
         ((MainActivity) getActivity()).setSelectedItem(id);
 
+        semuaBerita = (TextView) rootView.findViewById(R.id.semua_brita);
+        semuaVideo = (TextView) rootView.findViewById(R.id.semua_video);
+
         recyclerViewBerita = (RecyclerView) rootView.findViewById(R.id.berita_home);
+        recyclerViewVideo = (RecyclerView) rootView.findViewById(R.id.video_home);
 
         adapter = new HomePostAdapter(beritaList, getContext());
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerViewBerita.setLayoutManager(layoutManager);
         recyclerViewBerita.setAdapter(adapter);
 
+        videoAdapter = new HomeVideoAdapter(videoList, getContext());
+        RecyclerView.LayoutManager layoutManager1 = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerViewVideo.setLayoutManager(layoutManager1);
+        recyclerViewVideo.setAdapter(videoAdapter);
+
         fetchContent();
+
+
+        semuaBerita.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment fragment = new BeritaDesaFragment();
+                ((MainActivity) getActivity()).callFragment(fragment, "", id, 0);
+            }
+        });
+
+        semuaVideo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment fragment = new YouTubeFragment();
+                ((MainActivity) getActivity()).callFragment(fragment, "", id, 0);
+            }
+        });
 
         return rootView;
     }
@@ -92,6 +126,19 @@ public class HomeFragment extends Fragment {
 
                         beritaList.add(postberita);
                         adapter.notifyDataSetChanged();
+                    }
+
+                    JSONArray arrayVideo = objectAll.getJSONArray("videos");
+                    for (int i = 0; i < arrayVideo.length(); i++) {
+                        JSONObject objectVideo = arrayVideo.getJSONObject(i);
+                        MyVideo video = new MyVideo();
+                        video.setVideoId(objectVideo.getString("videoId"));
+                        video.setThumbnails(objectVideo.getString("thumbnails"));
+                        video.setTittle(objectVideo.getString("title"));
+                        video.setTanggal(objectVideo.getString("publishedAt"));
+
+                        videoList.add(video);
+                        videoAdapter.notifyDataSetChanged();
                     }
 
                 } catch (JSONException e) {

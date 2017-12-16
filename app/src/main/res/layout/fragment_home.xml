@@ -1,12 +1,12 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context="com.laelektronik.user.portaldesa.Fragment.HomeFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <FrameLayout
@@ -69,16 +69,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Berita"
+                    android:text="Berita Terbaru"
                     android:textSize="16sp"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:textColor="#000"/>
 
                 <TextView
+                    android:id="@+id/semua_brita"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="right"
-                    android:text="Lihat Semua" />
+                    android:text="Lihat Semua"
+                    android:textSize="12dp"/>
 
             </LinearLayout>
 
@@ -87,7 +90,43 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clipToPadding="false"
-                android:padding="8dp">
+                android:padding="4dp">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Video Terbaru"
+                    android:textSize="16sp"
+                    android:layout_weight="1"
+                    android:textColor="#000"/>
+
+                <TextView
+                    android:id="@+id/semua_video"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="Lihat Semua"
+                    android:textSize="12dp"/>
+
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/video_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:padding="4dp">
 
             </android.support.v7.widget.RecyclerView>
 

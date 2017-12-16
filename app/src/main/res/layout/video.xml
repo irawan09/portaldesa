@@ -3,9 +3,6 @@
     android:orientation="horizontal"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    android:layout_marginTop="10dp"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
     android:id="@+id/video_layout">
 
     <android.support.v7.widget.CardView
@@ -19,8 +16,8 @@
 
             <ImageView
                 android:id="@+id/pic_list"
-                android:layout_width="90dp"
-                android:layout_height="80dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:background="@drawable/kemendes"
                 android:scaleType="centerCrop"/>
 

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="4dp"
+    android:id="@+id/home_vide_list_rl">
+
+    <ImageView
+        android:id="@+id/home_video_list_img"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:id="@+id/home_video_list_title"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/home_video_list_img"
+        android:textSize="10sp"/>
+
+</RelativeLayout>

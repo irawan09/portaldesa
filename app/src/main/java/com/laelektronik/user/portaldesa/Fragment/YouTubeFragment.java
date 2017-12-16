@@ -63,7 +63,7 @@ public class YouTubeFragment extends Fragment {
         String pesan = getArguments().getString("pesan");
         final int id = getArguments().getInt("id");
 
-        ((MainActivity) getActivity()).setTitleActionBar(pesan);
+        ((MainActivity) getActivity()).setTitleActionBar("Video");
         ((MainActivity) getActivity()).setSelectedItem(id);
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.video_list);
