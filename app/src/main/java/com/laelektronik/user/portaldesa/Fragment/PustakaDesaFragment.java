@@ -163,7 +163,6 @@ public class PustakaDesaFragment extends Fragment {
                         e.printStackTrace();
                     }
 
-
             }
         }, new Response.ErrorListener() {
             @Override

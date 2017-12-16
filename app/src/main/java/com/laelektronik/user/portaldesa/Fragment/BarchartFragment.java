@@ -33,7 +33,6 @@ public class BarchartFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -88,10 +87,5 @@ public class BarchartFragment extends Fragment {
 
         return xAxis;
     }
-
-
-
-
-
 
 }

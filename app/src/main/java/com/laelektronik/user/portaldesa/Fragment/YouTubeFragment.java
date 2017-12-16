@@ -48,12 +48,9 @@ public class YouTubeFragment extends Fragment {
     VideoAdapter adapter;
     RecyclerView recyclerView;
 
-
-
     public YouTubeFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -96,8 +93,6 @@ public class YouTubeFragment extends Fragment {
         // system behavior (probably exit the activity)
         return onKeyDown(keyCode, event);
     }
-
-
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
