@@ -2,6 +2,7 @@ package com.laelektronik.user.portaldesa.Fragment;
 
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -30,6 +32,9 @@ public class KegiatanFragment extends Fragment {
     Fragment fragment = null;
     FragmentTransaction fragmentTransaction;
 
+    private String postUrl = "http://sarpras.laelektronik.com/kegiatan";
+    private WebView webView;
+
     public KegiatanFragment() {
         // Required empty public constructor
     }
@@ -45,6 +50,14 @@ public class KegiatanFragment extends Fragment {
         ((MainActivity) getActivity()).setTitleActionBar(pesan);
         ((MainActivity) getActivity()).setSelectedItem(id);
 
+        webView = (WebView) rootView.findViewById(R.id.webView);
+
+        webView.getSettings().setJavaScriptEnabled(true);
+
+        webView.loadUrl(postUrl);
+        webView.setHorizontalScrollBarEnabled(false);
+
+/*
         //Maembuat Tabel dinamis
         TableLayout tablelayoutid = (TableLayout) rootView.findViewById(R.id.tablelayoutid);
         for(int i=0;i<3;i++) {
@@ -55,7 +68,7 @@ public class KegiatanFragment extends Fragment {
             ((TextView) row.findViewById(R.id.nilai_kontrak)).setText(" "+"100.000.000");
             tablelayoutid.addView(row);
         }
-
+*/
         // Inflate the layout for this fragment
         return rootView;
     }
@@ -69,7 +82,7 @@ public class KegiatanFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
         //membentuk menu dari package menu
-        inflater.inflate(R.menu.search, menu);
+  //      inflater.inflate(R.menu.search, menu);
         inflater.inflate(R.menu.barchart, menu);
         return;
     }
@@ -82,7 +95,7 @@ public class KegiatanFragment extends Fragment {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.search) {
+  /*      if (id == R.id.search) {
             AlertDialog.Builder alert = new AlertDialog.Builder(
                     getContext());
 
@@ -111,7 +124,7 @@ public class KegiatanFragment extends Fragment {
             alert.show();
         return true;
         }
-
+*/
         if (id==R.id.barchart){
 
             fragment = new BarchartFragment();

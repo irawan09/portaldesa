@@ -4,42 +4,9 @@
     android:layout_height="match_parent"
     tools:context="com.laelektronik.user.portaldesa.Fragment.KegiatanFragment">
 
-    <TableLayout
-        android:id="@+id/tablelayoutid"
+    <WebView
+        android:id="@+id/webView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
-
-        <TableRow
-        android:id="@+id/rowlay"
-        android:background="#f7ff00"
-        android:padding="5dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/table_shape"
-                android:layout_weight="1"
-                android:text=" Kegiatan" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/table_shape"
-                android:text=" Lokasi" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/table_shape"
-                android:text=" Penyedia" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/table_shape"
-                android:text=" Nilai Kontrak"/>
-        </TableRow>
-
-    </TableLayout>
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>
