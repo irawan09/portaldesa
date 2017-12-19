@@ -68,50 +68,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 // mengecek kolom yang kosong
                 if (username.trim().length() > 0 && password.trim().length() > 0) {
-                 /*   final RequestQueue requestQueue = Volley.newRequestQueue(LoginActivity.this);
-                    final String Username, Password;
-
-                    StringRequest stringRequest = new StringRequest(Request.Method.POST, server_url,
-                            new Response.Listener<String>() {
-                                @Override
-                                public void onResponse(String response) {
-                                    if(response.equals("1")) {
-                                        Toast.makeText(MainActivity.this, "Login success ...", Toast.LENGTH_LONG).show();
-                                    } else {
-                                        Toast.makeText(MainActivity.this, response + "Invalid username or password ...", Toast.LENGTH_LONG).show();
-                                    }
-                                    requestQueue.stop();
-                                }
-                            }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Toast.makeText(MainActivity.this, "Error ...", Toast.LENGTH_LONG).show();
-                            error.printStackTrace();
-                            requestQueue.stop();
-                        }
-                    }){
-                        @Override
-                        protected Map<String, String> getParams() throws AuthFailureError{
-                            Map<String, String> params = new HashMap<String, String>();
-                            params.put("username", username);
-                            params.put("password", password);
-                            return params;
-                        }
-
-                    };
-                    requestQueue.add(stringRequest); */
-                    //setting data shared preferences
-
-                    //editor = preferences.edit();
-                    //editor.putString("username", username);
-                    //editor.putBoolean("otoritas", true);
-                    //editor.commit();
-
                     login();
-
-                    //Intent intent = new Intent(LoginActivity.this, LaporanActivity.class);
-                    //startActivity(intent);
-                    //finish();
                 } else {
                     // Prompt user to enter credentials
                     Toast.makeText(getApplicationContext() ,"Kolom tidak boleh kosong", Toast.LENGTH_LONG).show();
