@@ -39,7 +39,6 @@ public class LoginActivity extends AppCompatActivity {
         preferences = getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
         boolean otoritas = preferences.getBoolean("otoritas", false);
         if (otoritas){
-
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
