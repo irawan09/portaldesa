@@ -74,6 +74,8 @@ public class LaporanActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.logout) {
+            editor = preferences.edit();
+            editor.clear().commit();
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
             finish();
 

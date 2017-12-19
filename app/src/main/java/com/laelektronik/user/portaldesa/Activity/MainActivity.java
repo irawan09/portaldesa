@@ -35,8 +35,8 @@ public class MainActivity extends AppCompatActivity
     FragmentTransaction fragmentTransaction;
     private View navHeader;
 
-    SharedPreferences preferences;
-    SharedPreferences.Editor editor;
+    //SharedPreferences preferences;
+    //SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

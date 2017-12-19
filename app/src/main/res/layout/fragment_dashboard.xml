@@ -25,8 +25,7 @@
             <TextView
                 android:id="@+id/penyelenggara"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="LA Elektronik"/>
+                android:layout_height="match_parent" />
 
         </LinearLayout>
         <LinearLayout
@@ -44,14 +43,14 @@
                 android:text="Nama Kegiatan"/>
 
             <TextView
+                android:id="@+id/kegiatan"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=": LA Elektronik"/>
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
         <LinearLayout
             android:id="@+id/test3"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_below="@+id/test2"
@@ -63,14 +62,14 @@
                 android:text="Desa"/>
 
             <TextView
+                android:id="@+id/desa"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=": LA Elektronik" />
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
         <LinearLayout
             android:id="@+id/test4"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_below="@+id/test3"
@@ -82,14 +81,14 @@
                 android:text="Kecamatan"/>
 
             <TextView
+                android:id="@+id/kec"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=": LA Elektronik" />
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
         <LinearLayout
             android:id="@+id/test5"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_below="@+id/test4"
@@ -101,14 +100,14 @@
                 android:text="Kabupaten"/>
 
             <TextView
+                android:id="@+id/kab"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=": LA Elektronik" />
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
         <LinearLayout
             android:id="@+id/test6"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_below="@+id/test5"
@@ -120,14 +119,14 @@
                 android:text="Provinsi"/>
 
             <TextView
+                android:id="@+id/prov"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=": LA Elektronik" />
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
         <LinearLayout
             android:id="@+id/test7"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_below="@+id/test6"
@@ -139,14 +138,14 @@
                 android:text="Nilai Pagu"/>
 
             <TextView
+                android:id="@+id/pagu"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=": LA Elektronik" />
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
         <LinearLayout
             android:id="@+id/test8"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_below="@+id/test7"
@@ -158,9 +157,9 @@
                 android:text="Pemberi Tugas"/>
 
             <TextView
+                android:id="@+id/pemberi_tugas"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=": LA Elektronik" />
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
         <LinearLayout
@@ -177,9 +176,9 @@
                 android:text="Subdit"/>
 
             <TextView
+                android:id="@+id/subdit"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=": LA Elektronik" />
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
         <LinearLayout
@@ -196,9 +195,9 @@
                 android:text="Penanggung Jawab"/>
 
             <TextView
+                android:id="@+id/penanggung_jawab"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=": LA Elektronik" />
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
         <LinearLayout
@@ -215,9 +214,9 @@
                 android:text="Kontak Penanggung Jawab" />
 
             <TextView
+                android:id="@+id/kontak_pj"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=": LA Elektronik" />
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
         <LinearLayout
@@ -234,9 +233,9 @@
                 android:text="Alamat Penanggung Jawab" />
 
             <TextView
+                android:id="@+id/alamat_pj"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=": LA Elektronik" />
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
         <LinearLayout
@@ -250,12 +249,12 @@
             <TextView
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
-                android:text="Alamat Penanggung Jawab" />
+                android:text="Nilai Kontrak" />
 
             <TextView
+                android:id="@+id/nilai_kontrak"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=": LA Elektronik" />
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
         <LinearLayout
@@ -269,12 +268,12 @@
             <TextView
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
-                android:text="Nilai Kontrak" />
+                android:text="Pelaksana" />
 
             <TextView
+                android:id="@+id/pelaksana"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=": LA Elektronik" />
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
         <LinearLayout
@@ -282,18 +281,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_below="@+id/test14"
+            android:layout_below="@+id/test16"
             android:layout_marginLeft="8dp">
 
             <TextView
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
-                android:text="Pelaksana" />
+                android:text="Pimpinan Pelaksana" />
 
             <TextView
+                android:id="@+id/pimpinan_pelaksana"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=": LA Elektronik" />
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
         <LinearLayout
@@ -307,12 +306,12 @@
             <TextView
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
-                android:text="Pelaksana" />
+                android:text="Kontak Pelaksana" />
 
             <TextView
+                android:id="@+id/kontak_pelaksana"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=": LA Elektronik" />
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
         <LinearLayout
@@ -326,12 +325,12 @@
             <TextView
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
-                android:text="Pimpinan Pelaksana" />
+                android:text="No. Kontrak" />
 
             <TextView
+                android:id="@+id/kontrak"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=": LA Elektronik" />
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
         <LinearLayout
@@ -345,12 +344,12 @@
             <TextView
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
-                android:text="Kontak Pelaksana" />
+                android:text="Tanggal Kontrak" />
 
             <TextView
+                android:id="@+id/tgl_kontrak"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=": LA Elektronik" />
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
         <LinearLayout
@@ -364,12 +363,12 @@
             <TextView
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
-                android:text="No. Kontrak" />
+                android:text="Mulai Kerja" />
 
             <TextView
+                android:id="@+id/mulai_kerja"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=": LA Elektronik" />
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
         <LinearLayout
@@ -383,12 +382,12 @@
             <TextView
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
-                android:text="Tanggal Kontrak" />
+                android:text="Selesai Kerja" />
 
             <TextView
+                android:id="@+id/selesai_kerja"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=": LA Elektronik" />
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
         <LinearLayout
@@ -397,44 +396,6 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_below="@+id/test20"
-            android:layout_marginLeft="8dp">
-
-            <TextView
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:text="Mulai Kerja" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=": LA Elektronik" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/test22"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@+id/test21"
-            android:layout_marginLeft="8dp">
-
-            <TextView
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:text="Selesai Kerja" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=": LA Elektronik" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/test23"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@+id/test22"
             android:layout_marginLeft="8dp">
 
             <TextView

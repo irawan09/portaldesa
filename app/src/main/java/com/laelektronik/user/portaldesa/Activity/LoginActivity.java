@@ -143,7 +143,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         Intent intent = new Intent(LoginActivity.this, LaporanActivity.class);
                         startActivity(intent);
-                        //finish();
+                        finish();
                     }
 
                 } catch (JSONException e) {
@@ -169,6 +169,7 @@ public class LoginActivity extends AppCompatActivity {
         };
 
         AppController.getInstance().addToRequestQueue(request);
+        //oke
     }
 
 }
