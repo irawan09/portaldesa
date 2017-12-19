@@ -120,6 +120,8 @@ public class YouTubeFragment extends Fragment {
             intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject/Title");
             intent.putExtra(android.content.Intent.EXTRA_TEXT, shareBodyText);
             startActivity(Intent.createChooser(intent, "Pilih cara pembagian tautan"));
+
+            return true;
         }
 
         //noinspection SimplifiableIfStatement
