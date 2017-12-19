@@ -107,7 +107,6 @@ public class LoginActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-
             }
         }, new Response.ErrorListener() {
             @Override
@@ -126,7 +125,6 @@ public class LoginActivity extends AppCompatActivity {
         };
 
         AppController.getInstance().addToRequestQueue(request);
-        //oke
     }
 
 }
