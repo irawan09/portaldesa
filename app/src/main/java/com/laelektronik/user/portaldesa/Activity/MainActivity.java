@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity
             editor.commit();
 
             startActivity(new Intent(MainActivity.this,LoginActivity.class));
-            finish();   //finish current activity
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
