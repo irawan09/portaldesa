@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity
             editor.commit();
 
             startActivity(new Intent(MainActivity.this,LoginActivity.class));
-            finish();   //finish current activity
+            //finish();   //finish current activity
 
         }
 

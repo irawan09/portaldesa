@@ -53,7 +53,7 @@ public class HomeFragment extends Fragment {
     TextView semuaBerita, semuaVideo;
 
     ScrollView scrollView;
-    RelativeLayout rl;
+    //RelativeLayout rl;
 
     ProgressDialog progressDialog;
 
@@ -79,7 +79,7 @@ public class HomeFragment extends Fragment {
         semuaVideo = (TextView) rootView.findViewById(R.id.semua_video);
         //progressBar = (ProgressBar) rootView.findViewById(R.id.indeterminateBar);
         scrollView = (ScrollView) rootView.findViewById(R.id.scrollView2);
-        rl = (RelativeLayout) rootView.findViewById(R.id.indeterminateBar);
+        //rl = (RelativeLayout) rootView.findViewById(R.id.indeterminateBar);
 
         recyclerViewBerita = (RecyclerView) rootView.findViewById(R.id.berita_home);
         recyclerViewVideo = (RecyclerView) rootView.findViewById(R.id.video_home);
@@ -145,7 +145,7 @@ public class HomeFragment extends Fragment {
                 videoList.clear();
                 //loading.dismiss();
                 //progressBar.setVisibility(View.GONE);
-                rl.setVisibility(View.GONE);
+                //rl.setVisibility(View.GONE);
                 scrollView.setVisibility(View.VISIBLE);
 
 
