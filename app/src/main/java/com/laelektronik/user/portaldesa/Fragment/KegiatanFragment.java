@@ -20,8 +20,13 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.laelektronik.user.portaldesa.Activity.MainActivity;
 import com.laelektronik.user.portaldesa.R;
+
+import org.json.JSONArray;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,8 +37,13 @@ public class KegiatanFragment extends Fragment {
     Fragment fragment = null;
     FragmentTransaction fragmentTransaction;
 
-    private String postUrl = "http://sarpras.laelektronik.com/kegiatan";
+    private String postUrl = "http://sarpras.laelektronik.com/guide/kegiatan_m";
+    private String url = "http://sarpras.laelektronik.com/api/kegiatan";
     private WebView webView;
+
+    ProgressDialog progressDialog;
+
+
 
     public KegiatanFragment() {
         // Required empty public constructor
@@ -50,12 +60,12 @@ public class KegiatanFragment extends Fragment {
         ((MainActivity) getActivity()).setTitleActionBar(pesan);
         ((MainActivity) getActivity()).setSelectedItem(id);
 
-        webView = (WebView) rootView.findViewById(R.id.webView);
+        //webView = (WebView) rootView.findViewById(R.id.webView);
 
-        webView.getSettings().setJavaScriptEnabled(true);
+        //webView.getSettings().setJavaScriptEnabled(true);
 
-        webView.loadUrl(postUrl);
-        webView.setHorizontalScrollBarEnabled(false);
+        //webView.loadUrl(postUrl);
+        //webView.setHorizontalScrollBarEnabled(false);
 
 /*
         //Maembuat Tabel dinamis
@@ -146,6 +156,27 @@ public class KegiatanFragment extends Fragment {
         fragmentTransaction.replace(R.id.frame_container, fragment)
                 .addToBackStack(null)
                 .commit();
+    }
+
+    private void fetchContent() {
+        progressDialog.setMessage("Loading...");
+        progressDialog.show();
+
+        JsonArrayRequest request = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+
+                progressDialog.hide();
+
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
     }
 
 }

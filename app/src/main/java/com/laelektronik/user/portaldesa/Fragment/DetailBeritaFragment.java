@@ -50,7 +50,7 @@ public class DetailBeritaFragment extends Fragment {
         post = (Post) getArguments().getSerializable("post");
         Log.e("post", post.getTitlePost());
 
-        //((MainActivity) getActivity()).setTitleActionBar(pesan);
+        ((MainActivity) getActivity()).setTitleActionBar("Berita");
         //((MainActivity) getActivity()).setSelectedItem(id);
 
         Glide.with(getContext())

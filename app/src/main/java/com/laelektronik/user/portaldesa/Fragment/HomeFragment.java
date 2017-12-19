@@ -10,6 +10,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.android.volley.Response;
@@ -49,8 +52,10 @@ public class HomeFragment extends Fragment {
 
     TextView semuaBerita, semuaVideo;
 
-    ProgressDialog progressDialog;
+    ScrollView scrollView;
+    //RelativeLayout rl;
 
+    ProgressDialog progressDialog;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -72,6 +77,9 @@ public class HomeFragment extends Fragment {
 
         semuaBerita = (TextView) rootView.findViewById(R.id.semua_brita);
         semuaVideo = (TextView) rootView.findViewById(R.id.semua_video);
+        //progressBar = (ProgressBar) rootView.findViewById(R.id.indeterminateBar);
+        scrollView = (ScrollView) rootView.findViewById(R.id.scrollView2);
+        //rl = (RelativeLayout) rootView.findViewById(R.id.indeterminateBar);
 
         recyclerViewBerita = (RecyclerView) rootView.findViewById(R.id.berita_home);
         recyclerViewVideo = (RecyclerView) rootView.findViewById(R.id.video_home);
@@ -108,14 +116,39 @@ public class HomeFragment extends Fragment {
         return rootView;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
     private void fetchContent() {
+
         progressDialog.setMessage("Loading...");
         progressDialog.show();
+
         JsonArrayRequest request = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 progressDialog.hide();
                 beritaList.clear();
+
+                videoList.clear();
+                //loading.dismiss();
+                //progressBar.setVisibility(View.GONE);
+                //rl.setVisibility(View.GONE);
+                scrollView.setVisibility(View.VISIBLE);
+
+
                 try {
 
                     JSONObject objectAll = response.getJSONObject(0);
