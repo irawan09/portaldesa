@@ -15,10 +15,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import com.laelektronik.user.portaldesa.Fragment.BeritaDesaFragment;
-import com.laelektronik.user.portaldesa.Fragment.BiodataFragment;
 import com.laelektronik.user.portaldesa.Fragment.HomeFragment;
 import com.laelektronik.user.portaldesa.Fragment.KegiatanFragment;
 import com.laelektronik.user.portaldesa.Fragment.LokasiKegiatanFragment;
@@ -36,7 +34,6 @@ public class MainActivity extends AppCompatActivity
     Fragment fragment = null;
     FragmentTransaction fragmentTransaction;
     private View navHeader;
-    private TextView name, jabatan;
 
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
@@ -54,13 +51,10 @@ public class MainActivity extends AppCompatActivity
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         navHeader = navigationView.getHeaderView(0);
-        name = (TextView) navHeader.findViewById(R.id.user);
-        jabatan = (TextView) navHeader.findViewById(R.id.jabatan);
 
         //Mengeset nama User yang sedang aktif (login) menggunakan sharedpreferences
         preferences = getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
         username = preferences.getString("username", null);
-        name.setText(username);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -121,16 +115,12 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_lokasi) {
             fragment = new LokasiKegiatanFragment();
             callFragment(fragment, item.getTitle().toString(), id, 5);
-        } else if (id == R.id.nav_about) {
-            fragment = new BiodataFragment();
-            callFragment(fragment, item.getTitle().toString(), id, 6);
         } else if (id == R.id.nav_login){
             editor=preferences.edit();
             editor.clear();
             editor.commit();
 
             startActivity(new Intent(MainActivity.this,LoginActivity.class));
-            //finish();   //finish current activity
 
         }
 
@@ -155,12 +145,10 @@ public class MainActivity extends AppCompatActivity
 
     //untuk mengeset tittle action bar agar diambil oleh fragment (beda tittle bar tiap fragment)
     public void setTitleActionBar(String title) {
-
         getSupportActionBar().setTitle(title);
     }
 
     public void setSelectedItem(int id) {
-
         navigationView.getMenu().findItem(id).setChecked(true);
     }
 }

@@ -15,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.EditText;
 
+import com.laelektronik.user.portaldesa.Fragment.DashboardFragment;
 import com.laelektronik.user.portaldesa.Fragment.LaporanBulananFragment;
 import com.laelektronik.user.portaldesa.Fragment.LaporanMingguanFragment;
 import com.laelektronik.user.portaldesa.R;
@@ -45,6 +46,7 @@ public class LaporanActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new DashboardFragment(), "Kegiatan");
         adapter.addFragment(new LaporanMingguanFragment(), "Laporan Mingguan");
         adapter.addFragment(new LaporanBulananFragment(), "Laporan Bulanan");
         viewPager.setAdapter(adapter);
