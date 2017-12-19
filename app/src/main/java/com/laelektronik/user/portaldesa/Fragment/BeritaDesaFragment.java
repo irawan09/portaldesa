@@ -65,7 +65,7 @@ public class BeritaDesaFragment extends Fragment {
         String pesan = getArguments().getString("pesan");
         final int id = getArguments().getInt("id");
 
-        ((MainActivity) getActivity()).setTitleActionBar("Berita Sarpras");
+        ((MainActivity) getActivity()).setTitleActionBar("Berita");
         ((MainActivity) getActivity()).setSelectedItem(id);
 
         preferences = getActivity().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);

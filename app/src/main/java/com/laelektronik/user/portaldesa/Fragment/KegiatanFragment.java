@@ -32,7 +32,7 @@ public class KegiatanFragment extends Fragment {
     Fragment fragment = null;
     FragmentTransaction fragmentTransaction;
 
-    private String postUrl = "http://sarpras.laelektronik.com/kegiatan";
+    private String postUrl = "http://sarpras.laelektronik.com/guide/kegiatan_m";
     private WebView webView;
 
     public KegiatanFragment() {
