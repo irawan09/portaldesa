@@ -51,6 +51,8 @@ public class BeritaDesaFragment extends Fragment {
     RecyclerView recyclerView;
     PostAdapter adapter;
 
+    ProgressDialog progressDialog;
+
 
     public BeritaDesaFragment() {
         // Required empty public constructor
@@ -67,6 +69,8 @@ public class BeritaDesaFragment extends Fragment {
 
         ((MainActivity) getActivity()).setTitleActionBar("Berita");
         ((MainActivity) getActivity()).setSelectedItem(id);
+
+        progressDialog = new ProgressDialog(getContext());
 
         preferences = getActivity().getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
         String username = preferences.getString("username", null);
@@ -95,7 +99,7 @@ public class BeritaDesaFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
         //membentuk menu dari package menu
-        inflater.inflate(R.menu.search, menu);
+//        inflater.inflate(R.menu.search, menu);
         return;
     }
 
@@ -139,16 +143,15 @@ public class BeritaDesaFragment extends Fragment {
     }
 
     private void fetchContent() {
-        final ProgressDialog loading;
-        loading = ProgressDialog.show(getContext(), "Mendownload Data", "Tunggu...",false,false);
+        progressDialog.setMessage("Loading...");
+        progressDialog.show();
 
         JsonArrayRequest request = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 Log.e(TAG, response.toString());
+                progressDialog.hide();
                 listberita.clear();
-
-                loading.dismiss();
 
                 try {
                     JSONObject jsonObject = response.getJSONObject(0);

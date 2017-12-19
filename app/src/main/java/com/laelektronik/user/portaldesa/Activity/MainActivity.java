@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_about) {
             fragment = new BiodataFragment();
             callFragment(fragment, item.getTitle().toString(), id, 6);
-        } else if (id == R.id.nav_logout){
+        } else if (id == R.id.nav_login){
             editor=preferences.edit();
             editor.clear();
             editor.commit();

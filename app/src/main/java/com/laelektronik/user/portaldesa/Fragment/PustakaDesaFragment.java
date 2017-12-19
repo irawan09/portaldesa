@@ -48,6 +48,8 @@ public class PustakaDesaFragment extends Fragment {
     PDFReaderAdapter adapter;
     RecyclerView recyclerView;
 
+    ProgressDialog progressDialog;
+
     public PustakaDesaFragment() {
         // Required empty public constructor
     }
@@ -62,6 +64,8 @@ public class PustakaDesaFragment extends Fragment {
 
         ((MainActivity) getActivity()).setTitleActionBar(pesan);
         ((MainActivity) getActivity()).setSelectedItem(id);
+
+        progressDialog = new ProgressDialog(getContext());
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.pdf_list);
 
@@ -86,7 +90,7 @@ public class PustakaDesaFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
         //membentuk menu dari package menu
-        inflater.inflate(R.menu.search, menu);
+//        inflater.inflate(R.menu.search, menu);
         return;
     }
 
@@ -134,14 +138,14 @@ public class PustakaDesaFragment extends Fragment {
     }
 
     private void fetchContent() {
-        final ProgressDialog loading;
-        loading = ProgressDialog.show(getContext(), "Mendownload Data", "Tunggu...",false,false);
+        progressDialog.setMessage("Loading...");
+        progressDialog.show();
 
         JsonArrayRequest request = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
+                progressDialog.hide();
                 PDFList.clear();
-                loading.dismiss();
                 Log.d(TAG, response.toString());
 
                     try {

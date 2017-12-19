@@ -52,9 +52,10 @@ public class HomeFragment extends Fragment {
 
     TextView semuaBerita, semuaVideo;
 
-    //ProgressBar progressBar;
     ScrollView scrollView;
     RelativeLayout rl;
+
+    ProgressDialog progressDialog;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -71,6 +72,8 @@ public class HomeFragment extends Fragment {
 
         ((MainActivity) getActivity()).setTitleActionBar("Home");
         ((MainActivity) getActivity()).setSelectedItem(id);
+
+        progressDialog = new ProgressDialog(getContext());
 
         semuaBerita = (TextView) rootView.findViewById(R.id.semua_brita);
         semuaVideo = (TextView) rootView.findViewById(R.id.semua_video);
@@ -129,18 +132,22 @@ public class HomeFragment extends Fragment {
     }
 
     private void fetchContent() {
-        //final ProgressDialog loading;
-        //loading = ProgressDialog.show(getContext(), "Mendownload Data", "Tunggu...",false,false);
+
+        progressDialog.setMessage("Loading...");
+        progressDialog.show();
+
         JsonArrayRequest request = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                //Log.e(TAG, response.toString());
+                progressDialog.hide();
                 beritaList.clear();
+
                 videoList.clear();
                 //loading.dismiss();
                 //progressBar.setVisibility(View.GONE);
                 rl.setVisibility(View.GONE);
                 scrollView.setVisibility(View.VISIBLE);
+
 
                 try {
 
