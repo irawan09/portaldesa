@@ -1,6 +1,9 @@
 package com.laelektronik.user.portaldesa.Activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -9,6 +12,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+import android.widget.EditText;
 
 import com.laelektronik.user.portaldesa.Fragment.LaporanBulananFragment;
 import com.laelektronik.user.portaldesa.Fragment.LaporanMingguanFragment;
@@ -17,7 +22,7 @@ import com.laelektronik.user.portaldesa.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AfterLoginActivity extends AppCompatActivity {
+public class LaporanActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private TabLayout tabLayout;
@@ -45,6 +50,22 @@ public class AfterLoginActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
     }
 
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.logout) {
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            finish();
+
+            return true;
+        }
+        return onOptionsItemSelected(item);
+    }
+
     class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
@@ -55,6 +76,7 @@ public class AfterLoginActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
+
             return mFragmentList.get(position);
         }
 

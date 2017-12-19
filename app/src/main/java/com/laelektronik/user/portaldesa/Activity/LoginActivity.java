@@ -10,17 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.Volley;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.AuthFailureError;
 import com.laelektronik.user.portaldesa.R;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -103,7 +93,7 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putBoolean("otoritas", true);
                     editor.commit();
 
-                    Intent intent = new Intent(LoginActivity.this, AfterLoginActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, LaporanActivity.class);
                     startActivity(intent);
                     finish();
                 } else {

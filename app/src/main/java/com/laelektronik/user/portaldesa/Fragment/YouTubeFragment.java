@@ -2,6 +2,7 @@ package com.laelektronik.user.portaldesa.Fragment;
 
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -100,6 +101,8 @@ public class YouTubeFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
+
+        inflater.inflate(R.menu.share, menu);
         return;
     }
 
@@ -109,6 +112,15 @@ public class YouTubeFragment extends Fragment {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+
+        if (id == R.id.share) {
+            Intent intent = new Intent(android.content.Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            String shareBodyText = "https://www.youtube.com/channel/UC8kG1TQahqGs5m_KwPkrGcw";
+            intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject/Title");
+            intent.putExtra(android.content.Intent.EXTRA_TEXT, shareBodyText);
+            startActivity(Intent.createChooser(intent, "Pilih cara pembagian tautan"));
+        }
 
         //noinspection SimplifiableIfStatement
         return onOptionsItemSelected(item);

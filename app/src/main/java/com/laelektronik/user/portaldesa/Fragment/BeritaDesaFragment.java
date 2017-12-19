@@ -99,7 +99,7 @@ public class BeritaDesaFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
         //membentuk menu dari package menu
-        inflater.inflate(R.menu.search, menu);
+//        inflater.inflate(R.menu.search, menu);
         return;
     }
 
@@ -145,8 +145,6 @@ public class BeritaDesaFragment extends Fragment {
     private void fetchContent() {
         progressDialog.setMessage("Loading...");
         progressDialog.show();
-        final ProgressDialog loading;
-        loading = ProgressDialog.show(getContext(), "Mendownload Data", "Tunggu...",false,false);
 
         JsonArrayRequest request = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
             @Override

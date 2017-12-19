@@ -90,7 +90,7 @@ public class PustakaDesaFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
         //membentuk menu dari package menu
-        inflater.inflate(R.menu.search, menu);
+//        inflater.inflate(R.menu.search, menu);
         return;
     }
 

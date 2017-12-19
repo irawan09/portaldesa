@@ -93,7 +93,7 @@ public class DetailBeritaFragment extends Fragment {
             //untuk menambahkan menu share
             Intent intent = new Intent(android.content.Intent.ACTION_SEND);
             intent.setType("text/plain");
-            String shareBodyText = "https://developer.android.com/training/sharing/shareaction.html";
+            String shareBodyText = "http://sarpras.laelektronik.com/berita";
             intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject/Title");
             intent.putExtra(android.content.Intent.EXTRA_TEXT, shareBodyText);
             startActivity(Intent.createChooser(intent, "Pilih cara pembagian tautan"));
