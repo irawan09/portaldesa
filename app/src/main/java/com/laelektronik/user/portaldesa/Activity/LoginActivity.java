@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -31,7 +30,6 @@ public class LoginActivity extends AppCompatActivity {
     String server_url = "http://192.168.1.100/api/login.php";
 
     private EditText nama, pass;
-    private TextView daftar;
     private Button masuk;
 
     SharedPreferences preferences;
@@ -45,7 +43,6 @@ public class LoginActivity extends AppCompatActivity {
 
         nama = (EditText) findViewById(R.id.namauser);
         pass = (EditText) findViewById(R.id.password);
-        daftar = (TextView) findViewById(R.id.daftar);
         masuk = (Button) findViewById(R.id.submit1);
 
         //setting sharedpreferences untuk autologin
@@ -57,14 +54,6 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
-
-        daftar.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-
-                Intent intent = new Intent(LoginActivity.this, Signup.class);
-                startActivity(intent);
-            }
-        });
 
         masuk.setOnClickListener(new View.OnClickListener() {
 
