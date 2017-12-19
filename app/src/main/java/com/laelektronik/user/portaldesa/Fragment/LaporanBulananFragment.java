@@ -63,10 +63,6 @@ public class LaporanBulananFragment extends Fragment {
         return rootview;
     }
 
-
-
-
-
     @Override
     public void onActivityCreated(Bundle savedInstanceState){
         super.onActivityCreated(savedInstanceState);
