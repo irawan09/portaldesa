@@ -48,6 +48,8 @@ public class YouTubeFragment extends Fragment {
     VideoAdapter adapter;
     RecyclerView recyclerView;
 
+    ProgressDialog progressDialog;
+
     public YouTubeFragment() {
         // Required empty public constructor
     }
@@ -63,6 +65,8 @@ public class YouTubeFragment extends Fragment {
 
         ((MainActivity) getActivity()).setTitleActionBar("Video");
         ((MainActivity) getActivity()).setSelectedItem(id);
+
+        progressDialog = new ProgressDialog(getContext());
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.video_list);
 
@@ -111,13 +115,13 @@ public class YouTubeFragment extends Fragment {
     }
 
     private void fetchContent() {
-        final ProgressDialog loading;
-        loading = ProgressDialog.show(getContext(), "Mendownload Data", "Tunggu...",false,false);
+        progressDialog.setMessage("Loading...");
+        progressDialog.show();
         JsonArrayRequest request = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
+                progressDialog.hide();
                 VideoList.clear();
-                loading.dismiss();
                 Log.d(TAG, response.toString());
                 for (int i = 0; i < response.length(); i++) {
                     try {
