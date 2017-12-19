@@ -51,7 +51,7 @@ public class LaporanMingguanFragment extends Fragment {
         View rootview = inflater.inflate(R.layout.fragment_laporan_mingguan, container, false);
 
         final String [] items           = new String [] {"From Camera", "From SD Card"};
-        ArrayAdapter<String> adapter  = new ArrayAdapter<String>(getContext(), android.R.layout.select_dialog_item,items);
+        ArrayAdapter<String> adapter    = new ArrayAdapter<String>(getContext(), android.R.layout.select_dialog_item,items);
         AlertDialog.Builder builder     = new AlertDialog.Builder(getContext());
         builder.setTitle("Select Image");
         builder.setAdapter( adapter, new DialogInterface.OnClickListener() {

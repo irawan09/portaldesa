@@ -20,12 +20,14 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:layout_marginLeft="8dp"
+                android:textStyle="bold"
                 android:text="Kegiatan "/>
 
             <TextView
                 android:id="@+id/penyelenggara"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:textStyle="bold"/>
 
         </LinearLayout>
         <LinearLayout
