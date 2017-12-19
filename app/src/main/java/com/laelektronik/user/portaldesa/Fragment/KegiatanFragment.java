@@ -33,6 +33,7 @@ public class KegiatanFragment extends Fragment {
     FragmentTransaction fragmentTransaction;
 
     private String postUrl = "http://sarpras.laelektronik.com/guide/kegiatan_m";
+    private String url = "http://sarpras.laelektronik.com/api/kegiatan";
     private WebView webView;
 
     public KegiatanFragment() {
@@ -146,6 +147,10 @@ public class KegiatanFragment extends Fragment {
         fragmentTransaction.replace(R.id.frame_container, fragment)
                 .addToBackStack(null)
                 .commit();
+    }
+
+    private void fetchContent() {
+
     }
 
 }
