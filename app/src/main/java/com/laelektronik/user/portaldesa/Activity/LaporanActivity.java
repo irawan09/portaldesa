@@ -2,8 +2,10 @@ package com.laelektronik.user.portaldesa.Activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -12,6 +14,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.EditText;
 
@@ -29,6 +32,11 @@ public class LaporanActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
+
+    private int idKegiatan;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +50,12 @@ public class LaporanActivity extends AppCompatActivity {
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+
+        //Mengeset nama User yang sedang aktif (login) menggunakan sharedpreferences
+        preferences = getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
+        //username = preferences.getString("username", null);
+        idKegiatan = preferences.getInt("idKegiatan", 0);
+        Log.d("id kegiatan ", idKegiatan+"");
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -60,6 +74,8 @@ public class LaporanActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.logout) {
+            editor = preferences.edit();
+            editor.clear().commit();
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
             finish();
 

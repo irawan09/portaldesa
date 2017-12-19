@@ -35,8 +35,8 @@ public class MainActivity extends AppCompatActivity
     FragmentTransaction fragmentTransaction;
     private View navHeader;
 
-    SharedPreferences preferences;
-    SharedPreferences.Editor editor;
+    //SharedPreferences preferences;
+    //SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,9 +52,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         navHeader = navigationView.getHeaderView(0);
 
-        //Mengeset nama User yang sedang aktif (login) menggunakan sharedpreferences
-        preferences = getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
-        username = preferences.getString("username", null);
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -116,9 +114,9 @@ public class MainActivity extends AppCompatActivity
             fragment = new LokasiKegiatanFragment();
             callFragment(fragment, item.getTitle().toString(), id, 5);
         } else if (id == R.id.nav_login){
-            editor=preferences.edit();
-            editor.clear();
-            editor.commit();
+            //editor.preferences.edit();
+            //editor.clear();
+            //editor.commit();
 
             startActivity(new Intent(MainActivity.this,LoginActivity.class));
 
