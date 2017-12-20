@@ -87,7 +87,7 @@ public class LaporanMingguanFragment extends Fragment {
 
         mImageView = (ImageView) rootview.findViewById(R.id.iv_pic);
 
-        ((Button) rootview.findViewById(R.id.btn_choose)).setOnClickListener(new View.OnClickListener() {
+        ((ImageView) rootview.findViewById(R.id.iv_pic)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.show();
