@@ -37,6 +37,9 @@ public class LaporanMingguanFragment extends Fragment {
     private Uri mImageCaptureUri;
     private ImageView mImageView;
 
+    EditText prog_terakhir, rencana_perminggu, real_mingguan, dev_mingguan, minggu_ke;
+    Button kirim_minggu;
+
     private static final int PICK_FROM_CAMERA = 1;
     private static final int PICK_FROM_FILE = 2;
 
@@ -49,6 +52,14 @@ public class LaporanMingguanFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootview = inflater.inflate(R.layout.fragment_laporan_mingguan, container, false);
+
+        prog_terakhir = (EditText) rootview.findViewById(R.id.prog_lastmonth);
+        rencana_perminggu = (EditText) rootview.findViewById(R.id.plan_every_week);
+        real_mingguan = (EditText) rootview.findViewById(R.id.real_mingguan);
+        dev_mingguan = (EditText) rootview.findViewById(R.id.dev_mingguan);
+        minggu_ke = (EditText) rootview.findViewById(R.id.num_week);
+        kirim_minggu = (Button) rootview.findViewById(R.id.kirim_mingguan);
+
 
         final String [] items           = new String [] {"From Camera", "From SD Card"};
         ArrayAdapter<String> adapter    = new ArrayAdapter<String>(getContext(), android.R.layout.select_dialog_item,items);

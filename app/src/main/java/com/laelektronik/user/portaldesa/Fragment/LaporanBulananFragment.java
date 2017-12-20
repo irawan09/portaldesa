@@ -1,51 +1,25 @@
 package com.laelektronik.user.portaldesa.Fragment;
 
 
-import android.app.AlertDialog;
-import android.app.ProgressDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.laelektronik.user.portaldesa.Controller.AppController;
 import com.laelektronik.user.portaldesa.R;
-import com.laelektronik.user.portaldesa.Util.Post;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.File;
-
-import static android.app.Activity.RESULT_OK;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class LaporanBulananFragment extends Fragment {
 
-
+    EditText prog_terakhir, rencana_perbulan, real_bulanan, dev_bulanan, bulan_ke;
+    Button kirim_bulanan;
 
     public LaporanBulananFragment() {
         // Required empty public constructor
@@ -56,6 +30,13 @@ public class LaporanBulananFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootview = inflater.inflate(R.layout.fragment_laporan_bulanan, container, false);
+
+        prog_terakhir = (EditText) rootview.findViewById(R.id.prog_lastmonth);
+        rencana_perbulan =(EditText) rootview.findViewById(R.id.plan_every_month);
+        real_bulanan = (EditText) rootview.findViewById(R.id.real_bulanan);
+        dev_bulanan = (EditText) rootview.findViewById(R.id.dev_bulanan);
+        bulan_ke = (EditText) rootview.findViewById(R.id.num_month);
+        kirim_bulanan = (Button) rootview.findViewById(R.id.kirim_bulanan);
 
 
 
