@@ -8,6 +8,11 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -24,9 +29,17 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.laelektronik.user.portaldesa.Activity.MainActivity;
+import com.laelektronik.user.portaldesa.Adapter.KegiatanAdapter;
+import com.laelektronik.user.portaldesa.Controller.AppController;
 import com.laelektronik.user.portaldesa.R;
+import com.laelektronik.user.portaldesa.Util.Kegiatan;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -43,7 +56,12 @@ public class KegiatanFragment extends Fragment {
 
     ProgressDialog progressDialog;
 
+    List<Kegiatan> kegiatanList = new ArrayList<>();
+    RecyclerView recyclerViewKegiatan;
 
+    KegiatanAdapter adapter;
+
+    DividerItemDecoration dividerItemDecoration;
 
     public KegiatanFragment() {
         // Required empty public constructor
@@ -60,25 +78,21 @@ public class KegiatanFragment extends Fragment {
         ((MainActivity) getActivity()).setTitleActionBar(pesan);
         ((MainActivity) getActivity()).setSelectedItem(id);
 
-        //webView = (WebView) rootView.findViewById(R.id.webView);
+        progressDialog = new ProgressDialog(getContext());
 
-        //webView.getSettings().setJavaScriptEnabled(true);
+        recyclerViewKegiatan = (RecyclerView) rootView.findViewById(R.id.rc_kegiatan);
+        adapter = new KegiatanAdapter(kegiatanList, getContext());
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        recyclerViewKegiatan.setLayoutManager(layoutManager);
 
-        //webView.loadUrl(postUrl);
-        //webView.setHorizontalScrollBarEnabled(false);
+        dividerItemDecoration = new DividerItemDecoration(recyclerViewKegiatan.getContext(), LinearLayoutManager.VERTICAL);
+        recyclerViewKegiatan.addItemDecoration(dividerItemDecoration);
 
-/*
-        //Maembuat Tabel dinamis
-        TableLayout tablelayoutid = (TableLayout) rootView.findViewById(R.id.tablelayoutid);
-        for(int i=0;i<3;i++) {
-            TableRow row = (TableRow) getLayoutInflater().inflate(R.layout.layout_row, null);
-            ((TextView) row.findViewById(R.id.desc_kegiatan)).setText(" "+"Pendukung Ekonomi");
-            ((TextView) row.findViewById(R.id.lokasi)).setText(" "+"NTB");
-            ((TextView) row.findViewById(R.id.penyedia)).setText(" "+"PT. Nusa Tenggara Barat");
-            ((TextView) row.findViewById(R.id.nilai_kontrak)).setText(" "+"100.000.000");
-            tablelayoutid.addView(row);
-        }
-*/
+        recyclerViewKegiatan.setItemAnimator(new DefaultItemAnimator());
+        recyclerViewKegiatan.setAdapter(adapter);
+
+
+        fetchContent();
         // Inflate the layout for this fragment
         return rootView;
     }
@@ -104,53 +118,23 @@ public class KegiatanFragment extends Fragment {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-  /*      if (id == R.id.search) {
-            AlertDialog.Builder alert = new AlertDialog.Builder(
-                    getContext());
-
-            alert.setTitle("Cari Kegiatan");
-
-            // Set an EditText view to get user input
-            final EditText txtcari = new EditText(getContext());
-            alert.setView(txtcari);
-            txtcari.isFocusable();
-            alert.setPositiveButton("Cari",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which)
-                        {
-
-
-                        }
-                    });
-
-            alert.setNegativeButton("Batal",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog,
-                                            int whichButton) {
-                            // Canceled.
-                        }
-                    });
-            alert.show();
-        return true;
-        }
-*/
         if (id==R.id.barchart){
 
             fragment = new BarchartFragment();
             callFragment(fragment, item.getTitle().toString(), id, 3);
             return true;
         }
+
         return onOptionsItemSelected(item);
     }
 
     public void callFragment(Fragment fragment, String s, int id, int i) {
         //Menyisipkan bundle untuk mengeset tiap activity fragment yang dipanggil
-        Bundle bundle = new Bundle();
-        bundle.putString("pesan", s);
-        bundle.putInt("id", id);
-        bundle.putInt("category", i);
-        fragment.setArguments(bundle);
+        //Bundle bundle = new Bundle();
+        //bundle.putString("pesan", s);
+        //bundle.putInt("id", id);
+        //bundle.putInt("category", i);
+        //fragment.setArguments(bundle);
         fragmentManager = getActivity().getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_container, fragment)
@@ -167,7 +151,37 @@ public class KegiatanFragment extends Fragment {
             public void onResponse(JSONArray response) {
 
                 progressDialog.hide();
+                kegiatanList.clear();
 
+                //Log.d("response kegiatan", response.toString());
+
+                try {
+                    JSONObject objectKegiatan = response.getJSONObject(0);
+                    JSONArray arrayKegiatan = objectKegiatan.getJSONArray("kegiatan");
+
+                    for (int i = 0; i < arrayKegiatan.length(); i++) {
+                        JSONObject object = arrayKegiatan.getJSONObject(i);
+
+                        Kegiatan kegiatan = new Kegiatan();
+
+                        kegiatan.setId(object.getInt("id_kegiatan"));
+                        kegiatan.setNamaKegiatan(object.getString("nama_kegiatan"));
+                        kegiatan.setDesa(object.getString("desa"));
+                        kegiatan.setKecamatan(object.getString("kecamatan"));
+                        kegiatan.setKabupaten(object.getString("kabupaten"));
+                        kegiatan.setProvinsi(object.getString("provinsi"));
+                        kegiatan.setPenanggungJawab(object.getString("penanggung_jawab"));
+                        kegiatan.setNilaiKontrak(object.getString("nilai_kontrak"));
+                        kegiatan.setPelaksana(object.getString("pelaksana"));
+                        kegiatan.setSubdit(object.getString("subdit"));
+
+                        kegiatanList.add(kegiatan);
+                        adapter.notifyDataSetChanged();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
 
             }
@@ -177,6 +191,8 @@ public class KegiatanFragment extends Fragment {
 
             }
         });
+
+        AppController.getInstance().addToRequestQueue(request);
     }
 
 }

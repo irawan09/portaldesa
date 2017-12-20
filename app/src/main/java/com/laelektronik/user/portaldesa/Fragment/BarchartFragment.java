@@ -6,6 +6,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -54,6 +57,39 @@ public class BarchartFragment extends Fragment {
 
         // Inflate the layout for this fragment
         return rootView;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState){
+        super.onActivityCreated(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
+        //membentuk menu dari package menu
+        //      inflater.inflate(R.menu.search, menu);
+        inflater.inflate(R.menu.list, menu);
+        return;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        if (id==R.id.list){
+
+            getActivity().onBackPressed();
+            //fragment = new KegiatanFragment();
+            //((MainActivity) getActivity()).callFragment(fragment, item.getTitle().toString(), id, 3);
+            return true;
+        }
+
+        //return onOptionsItemSelected(item);
+        return true;
     }
 
     private ArrayList<BarDataSet> getDataSet() {
