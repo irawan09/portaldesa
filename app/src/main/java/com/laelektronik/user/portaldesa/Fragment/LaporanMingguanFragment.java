@@ -12,20 +12,32 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.laelektronik.user.portaldesa.Controller.AppController;
 import com.laelektronik.user.portaldesa.R;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -39,9 +51,12 @@ public class LaporanMingguanFragment extends Fragment {
 
     EditText prog_terakhir, rencana_perminggu, real_mingguan, dev_mingguan, minggu_ke;
     Button kirim_minggu;
+    protected String pt, rb,realb,db,bk;
 
     private static final int PICK_FROM_CAMERA = 1;
     private static final int PICK_FROM_FILE = 2;
+
+    String server_url = "http://sarpras.laelektronik.com/api/login_pelaksana";
 
     public LaporanMingguanFragment() {
         // Required empty public constructor
@@ -105,6 +120,19 @@ public class LaporanMingguanFragment extends Fragment {
             }
         });
 
+        kirim_minggu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pt = prog_terakhir.getText().toString();
+                rb = rencana_perminggu.getText().toString();
+                realb = real_mingguan.getText().toString();
+                db = dev_mingguan.getText().toString();
+                bk = minggu_ke.getText().toString();
+
+                kirim();
+            }
+        });
+
         // Inflate the layout for this fragment
         return rootview;
     }
@@ -143,6 +171,47 @@ public class LaporanMingguanFragment extends Fragment {
         cursor.moveToFirst();
 
         return cursor.getString(column_index);
+    }
+
+    private void kirim(){
+        StringRequest request = new StringRequest(Request.Method.POST, server_url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("login", response.toString());
+
+                try {
+                    JSONObject object = new JSONObject(response);
+                    String status = object.getString("status");
+
+                    if (status.equals("success")) {
+                        Toast.makeText(getContext(),"Sukses", Toast.LENGTH_LONG);
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("prog_terakhir", pt);
+                params.put("rencana_permingguan", rb);
+                params.put("real_mingguan",realb);
+                params.put("deviasi_mingguan",db);
+                params.put("minggu_ke",bk);
+
+                return params;
+            }
+        };
+
+        AppController.getInstance().addToRequestQueue(request);
     }
 
     @Override
