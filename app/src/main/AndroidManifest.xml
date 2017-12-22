@@ -61,8 +61,12 @@
 
         <activity android:name=".Activity.CariActivity" />
         <activity android:name=".Activity.PDFDownloaderActivity" />
-        <activity android:name=".Activity.LaporanActivity"
-            android:theme="@style/MyMaterialTheme"></activity>
+        <activity
+            android:name=".Activity.LaporanActivity"
+            android:theme="@style/MyMaterialTheme" />
+        <activity
+            android:name=".Activity.MapsLaporanActivity"
+            android:label="@string/title_activity_maps_laporan"></activity>
     </application>
 
 </manifest>
