@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -35,6 +36,7 @@ import com.laelektronik.user.portaldesa.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
@@ -51,7 +53,8 @@ public class LaporanMingguanFragment extends Fragment {
 
     EditText prog_terakhir, rencana_perminggu, real_mingguan, dev_mingguan, minggu_ke;
     Button kirim_minggu;
-    protected String pt, rb,realb,db,bk;
+    protected String pt, rb,realb,db,bk, gambar_base64;
+    Bitmap gambarUpload;
 
     private static final int PICK_FROM_CAMERA = 1;
     private static final int PICK_FROM_FILE = 2;
@@ -128,7 +131,7 @@ public class LaporanMingguanFragment extends Fragment {
                 realb = real_mingguan.getText().toString();
                 db = dev_mingguan.getText().toString();
                 bk = minggu_ke.getText().toString();
-
+                gambar_base64 = base64(gambarUpload);
                 kirim();
             }
         });
@@ -158,6 +161,7 @@ public class LaporanMingguanFragment extends Fragment {
         }
 
         mImageView.setImageBitmap(bitmap);
+        gambarUpload=bitmap;
     }
 
     public String getRealPathFromURI(Uri contentUri) {
@@ -171,6 +175,16 @@ public class LaporanMingguanFragment extends Fragment {
         cursor.moveToFirst();
 
         return cursor.getString(column_index);
+    }
+
+    protected String base64(Bitmap gambar){
+        gambarUpload=gambar;
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        gambar.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] imageBytes = baos.toByteArray();
+        final String imageString = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+
+        return imageString;
     }
 
     private void kirim(){
@@ -206,6 +220,7 @@ public class LaporanMingguanFragment extends Fragment {
                 params.put("real_mingguan",realb);
                 params.put("deviasi_mingguan",db);
                 params.put("minggu_ke",bk);
+                params.put("image", gambar_base64);
 
                 return params;
             }
