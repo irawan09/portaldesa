@@ -149,7 +149,7 @@ public class BeritaDesaFragment extends Fragment {
         JsonArrayRequest request = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                Log.e(TAG, response.toString());
+                //Log.e(TAG, response.toString());
                 progressDialog.hide();
                 listberita.clear();
 

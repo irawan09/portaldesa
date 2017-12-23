@@ -1,53 +1,148 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.laelektronik.user.portaldesa.Fragment.DetailBeritaFragment">
+    android:orientation="vertical"
+    android:padding="8dp"
+    tools:context="com.laelektronik.user.portaldesa.Fragment.DetailKegiatanFragment">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Nama Kegiatan"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorBlack"
+            android:layout_marginBottom="8dp"
+            />
 
-            <ImageView
-                android:id="@+id/featured_image_detail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/nama_kegiatan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="nama"/>
 
-            <TextView
-                android:id="@+id/title_detail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textSize="24sp"
-                android:text="Title"
-                android:paddingTop="8dp"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp" />
+    </LinearLayout>
 
-            <TextView
-                android:id="@+id/published_detail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="date"
-                android:paddingTop="0dp"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:paddingBottom="8dp"
-                android:textColor="#a3a2a2"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/content_detail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="content"
-                android:padding="8dp"/>
-        </LinearLayout>
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Provinsi"
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:textColor="@color/colorBlack"
+            android:layout_marginBottom="8dp"/>
 
-    </ScrollView>
+        <TextView
+            android:id="@+id/provinsi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="provinsi"/>
 
-</FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Subdit"
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:textColor="@color/colorBlack"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/subdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="subdit"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Penanggung jawab"
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:textColor="@color/colorBlack"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/penanggung_jawab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="provinsi"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Nilai Kontrak"
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:textColor="@color/colorBlack"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/nilai_kontrak"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="nilai kontrak"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Pelaksana"
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:textColor="@color/colorBlack"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/pelaksana"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="pelaksana"/>
+
+    </LinearLayout>
+
+</LinearLayout>

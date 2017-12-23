@@ -82,3 +82,4 @@ public class KegiatanAdapter extends RecyclerView.Adapter<KegiatanAdapter.MyView
     }
 
 }
+
