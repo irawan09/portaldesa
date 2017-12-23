@@ -30,6 +30,8 @@ public class DetailBeritaFragment extends Fragment {
     Post post;
     ImageView featured_iamge;
     TextView titel, published, content;
+    int id;
+    String slug;
 
     public DetailBeritaFragment() {
         // Required empty public constructor
@@ -49,7 +51,8 @@ public class DetailBeritaFragment extends Fragment {
         //final int id = getArguments().getInt("id");
         post = (Post) getArguments().getSerializable("post");
         Log.e("post", post.getTitlePost());
-
+        id = post.getId();
+//        slug = post.gets
         ((MainActivity) getActivity()).setTitleActionBar("Berita");
         //((MainActivity) getActivity()).setSelectedItem(id);
 
@@ -93,7 +96,7 @@ public class DetailBeritaFragment extends Fragment {
             //untuk menambahkan menu share
             Intent intent = new Intent(android.content.Intent.ACTION_SEND);
             intent.setType("text/plain");
-            String shareBodyText = "http://sarpras.laelektronik.com/berita";
+            String shareBodyText = "http://sarpras.laelektronik.com/guide/detail/berita/";
             intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject/Title");
             intent.putExtra(android.content.Intent.EXTRA_TEXT, shareBodyText);
             startActivity(Intent.createChooser(intent, "Pilih cara pembagian tautan"));

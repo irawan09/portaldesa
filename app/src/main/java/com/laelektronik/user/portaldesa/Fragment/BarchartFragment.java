@@ -142,6 +142,7 @@ public class BarchartFragment extends Fragment {
         return xAxis;
     }
 
+
     private void fetchData() {
         Log.e("fetch data", "oke");
         JsonArrayRequest request = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
@@ -188,3 +189,4 @@ public class BarchartFragment extends Fragment {
     }
 
 }
+

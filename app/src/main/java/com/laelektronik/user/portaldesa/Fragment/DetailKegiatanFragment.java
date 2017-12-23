@@ -52,4 +52,6 @@ public class DetailKegiatanFragment extends Fragment {
         return rootView;
     }
 
+
 }
+

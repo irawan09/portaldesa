@@ -1,13 +1,58 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.laelektronik.user.portaldesa.Fragment.LaporanBulananFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <EditText
+        android:id="@+id/prog_lastmonth"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:hint="Progress bulan lalu"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"/>
 
-</FrameLayout>
+    <EditText
+        android:id="@+id/plan_every_month"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Rencana bulanan"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"/>
+
+    <EditText
+        android:id="@+id/real_bulanan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Realisasi bulanan"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"/>
+
+    <EditText
+        android:id="@+id/dev_bulanan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Deviasi bulanan"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"/>
+
+    <EditText
+        android:id="@+id/num_month"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Bulan ke-"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"/>
+
+    <Button
+        android:id="@+id/kirim_bulanan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/btn_champer"
+        android:text="Kirim"/>
+</LinearLayout>
