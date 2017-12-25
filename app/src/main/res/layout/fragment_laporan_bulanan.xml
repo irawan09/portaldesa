@@ -6,14 +6,14 @@
     tools:context="com.laelektronik.user.portaldesa.Fragment.LaporanBulananFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <EditText
+    <!--<EditText
         android:id="@+id/prog_lastmonth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Progress bulan lalu"
         android:layout_marginTop="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"/>
+        android:layout_marginRight="16dp"/>-->
 
     <EditText
         android:id="@+id/plan_every_month"
@@ -45,7 +45,8 @@
         android:layout_height="wrap_content"
         android:hint="Bulan ke-"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"/>
+        android:layout_marginRight="16dp"
+        android:inputType="number"/>
 
     <Button
         android:id="@+id/kirim_bulanan"
