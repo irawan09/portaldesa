@@ -172,12 +172,14 @@ public class LaporanMingguanFragment extends Fragment {
             if (path != null)
                 bitmap  = BitmapFactory.decodeFile(path);
         } else {
+
             //mImageCaptureUri = data.getData();
             //path    = mImageCaptureUri.getPath();
             //bitmap  = BitmapFactory.decodeFile(path);
             Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-            bitmap = imageBitmap;
+            bitmap = (Bitmap) extras.get("data");
+            
+
         }
 
         mImageView.setImageBitmap(bitmap);
