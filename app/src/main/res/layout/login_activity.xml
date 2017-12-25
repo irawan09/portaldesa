@@ -41,7 +41,7 @@
             android:singleLine="true"
             android:textColorHint="#FFFF"
             android:background="@drawable/bg_edit_text"
-            android:fontFamily="sans-serif-condensed"
+            android:fontFamily="sans-serif"
             android:layout_marginTop="8dp" />
 
         <EditText
@@ -53,7 +53,7 @@
             android:layout_marginTop="8dp"
             android:textColorHint="#FFFF"
             android:background="@drawable/bg_edit_text"
-            android:fontFamily="sans-serif-condensed"
+            android:fontFamily="sans-serif"
             android:inputType="textPassword"/>
 
         <Button
@@ -62,7 +62,8 @@
             android:layout_height="match_parent"
             android:background="@drawable/bg_button"
             android:layout_marginTop="8dp"
-            android:text="MASUK"/>
+            android:text="MASUK"
+            android:textColor="#fff"/>
     </LinearLayout>
 
     <TextView

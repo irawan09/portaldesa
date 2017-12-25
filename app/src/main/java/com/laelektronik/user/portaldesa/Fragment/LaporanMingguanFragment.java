@@ -2,6 +2,7 @@ package com.laelektronik.user.portaldesa.Fragment;
 
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -23,6 +24,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -30,6 +32,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.laelektronik.user.portaldesa.Activity.LaporanActivity;
 import com.laelektronik.user.portaldesa.Controller.AppController;
 import com.laelektronik.user.portaldesa.R;
 
@@ -59,7 +62,12 @@ public class LaporanMingguanFragment extends Fragment {
     private static final int PICK_FROM_CAMERA = 1;
     private static final int PICK_FROM_FILE = 2;
 
-    String server_url = "http://sarpras.laelektronik.com/api/login_pelaksana";
+    private String server_url = "http://sarpras.laelektronik.com/api/add_laporan_mingguan";
+
+    int idKegiatan;
+
+    TextView textGambar;
+    ProgressDialog progressDialog;
 
     public LaporanMingguanFragment() {
         // Required empty public constructor
@@ -71,12 +79,17 @@ public class LaporanMingguanFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootview = inflater.inflate(R.layout.fragment_laporan_mingguan, container, false);
 
-        prog_terakhir = (EditText) rootview.findViewById(R.id.prog_lastmonth);
+        //prog_terakhir = (EditText) rootview.findViewById(R.id.prog_lastmonth);
         rencana_perminggu = (EditText) rootview.findViewById(R.id.plan_every_week);
         real_mingguan = (EditText) rootview.findViewById(R.id.real_mingguan);
         dev_mingguan = (EditText) rootview.findViewById(R.id.dev_mingguan);
         minggu_ke = (EditText) rootview.findViewById(R.id.num_week);
         kirim_minggu = (Button) rootview.findViewById(R.id.kirim_mingguan);
+        textGambar = (TextView) rootview.findViewById(R.id.text_gambar);
+
+        idKegiatan = ((LaporanActivity) getActivity()).idKegiatan;
+
+        progressDialog = new ProgressDialog(getContext());
 
 
         final String [] items           = new String [] {"From Camera", "From SD Card"};
@@ -87,13 +100,15 @@ public class LaporanMingguanFragment extends Fragment {
             public void onClick( DialogInterface dialog, int item ) {
                 if (item == 0) {
                     Intent intent    = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    File file        = new File(Environment.getExternalStorageDirectory(),
-                            "tmp_avatar_" + String.valueOf(System.currentTimeMillis()) + ".jpg");
-                    mImageCaptureUri = Uri.fromFile(file);
+                    //File file        = new File(Environment.getExternalStorageDirectory(),
+                    //        "tmp_avatar_" + String.valueOf(System.currentTimeMillis()) + ".jpg");
+                    //mImageCaptureUri = Uri.fromFile(file);
+                    //mImageCaptureUri =
 
                     try {
-                        intent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, mImageCaptureUri);
-                        intent.putExtra("return-data", true);
+                        //intent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, mImageCaptureUri);
+                        //intent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT);
+                        //intent.putExtra("return-data", true);
 
                         startActivityForResult(intent, PICK_FROM_CAMERA);
                     } catch (Exception e) {
@@ -126,12 +141,13 @@ public class LaporanMingguanFragment extends Fragment {
         kirim_minggu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pt = prog_terakhir.getText().toString();
+                //pt = prog_terakhir.getText().toString();
                 rb = rencana_perminggu.getText().toString();
                 realb = real_mingguan.getText().toString();
                 db = dev_mingguan.getText().toString();
                 bk = minggu_ke.getText().toString();
-                gambar_base64 = base64(gambarUpload);
+                //gambar_base64 = base64(gambarUpload);
+                //Log.e("string gambar", gambar_base64);
                 kirim();
             }
         });
@@ -156,12 +172,17 @@ public class LaporanMingguanFragment extends Fragment {
             if (path != null)
                 bitmap  = BitmapFactory.decodeFile(path);
         } else {
-            path    = mImageCaptureUri.getPath();
-            bitmap  = BitmapFactory.decodeFile(path);
+            //mImageCaptureUri = data.getData();
+            //path    = mImageCaptureUri.getPath();
+            //bitmap  = BitmapFactory.decodeFile(path);
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            bitmap = imageBitmap;
         }
 
         mImageView.setImageBitmap(bitmap);
         gambarUpload=bitmap;
+        textGambar.setVisibility(View.GONE);
     }
 
     public String getRealPathFromURI(Uri contentUri) {
@@ -188,17 +209,26 @@ public class LaporanMingguanFragment extends Fragment {
     }
 
     private void kirim(){
+        progressDialog.setMessage("Loading...");
+        progressDialog.show();
         StringRequest request = new StringRequest(Request.Method.POST, server_url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.d("login", response.toString());
+                progressDialog.hide();
 
                 try {
                     JSONObject object = new JSONObject(response);
+                    Log.e("object", object.toString());
+
                     String status = object.getString("status");
+                    Log.e("status", status);
 
                     if (status.equals("success")) {
-                        Toast.makeText(getContext(),"Sukses", Toast.LENGTH_LONG);
+                        Toast.makeText(getContext(),"Berhasil Menambahkan Data", Toast.LENGTH_LONG).show();
+                    }
+                    else {
+                        Toast.makeText(getContext(),"Gagal Menambahkan Data", Toast.LENGTH_LONG).show();
                     }
 
                 } catch (JSONException e) {
@@ -209,18 +239,19 @@ public class LaporanMingguanFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Toast.makeText(getContext(),"Gagal Menambahkan Data", Toast.LENGTH_LONG).show();
             }
         }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("prog_terakhir", pt);
-                params.put("rencana_permingguan", rb);
-                params.put("real_mingguan",realb);
-                params.put("deviasi_mingguan",db);
+                //params.put("prog_terakhir", pt);
+                params.put("id_kegiatan", String.valueOf(idKegiatan));
+                params.put("rencana_mingguan", rb);
+                params.put("realisasi_mingguan",realb);
+                params.put("defiasi_mingguan",db);
                 params.put("minggu_ke",bk);
-                params.put("image", gambar_base64);
+                params.put("image",  base64(gambarUpload));
 
                 return params;
             }

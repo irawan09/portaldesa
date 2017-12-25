@@ -35,7 +35,8 @@ public class LaporanActivity extends AppCompatActivity {
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
 
-    private int idKegiatan;
+    public int idKegiatan;
+    public String pelaksana;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +57,17 @@ public class LaporanActivity extends AppCompatActivity {
         //username = preferences.getString("username", null);
         idKegiatan = preferences.getInt("idKegiatan", 0);
         Log.d("id kegiatan ", idKegiatan+"");
+        pelaksana = preferences.getString("username", null);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
     }
 
     private void setupViewPager(ViewPager viewPager) {
