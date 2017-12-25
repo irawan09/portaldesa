@@ -101,16 +101,8 @@ public class LaporanMingguanFragment extends Fragment {
             public void onClick( DialogInterface dialog, int item ) {
                 if (item == 0) {
                     Intent intent    = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    //File file        = new File(Environment.getExternalStorageDirectory(),
-                    //        "tmp_avatar_" + String.valueOf(System.currentTimeMillis()) + ".jpg");
-                    //mImageCaptureUri = Uri.fromFile(file);
-                    //mImageCaptureUri =
 
                     try {
-                        //intent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, mImageCaptureUri);
-                        //intent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT);
-                        //intent.putExtra("return-data", true);
-
                         startActivityForResult(intent, PICK_FROM_CAMERA);
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -142,13 +134,10 @@ public class LaporanMingguanFragment extends Fragment {
         kirim_minggu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //pt = prog_terakhir.getText().toString();
                 rb = rencana_perminggu.getText().toString();
                 realb = real_mingguan.getText().toString();
                 db = dev_mingguan.getText().toString();
                 bk = minggu_ke.getText().toString();
-                //gambar_base64 = base64(gambarUpload);
-                //Log.e("string gambar", gambar_base64);
                 kirim();
             }
         });
@@ -174,9 +163,6 @@ public class LaporanMingguanFragment extends Fragment {
                 bitmap  = BitmapFactory.decodeFile(path);
         } else {
 
-            //mImageCaptureUri = data.getData();
-            //path    = mImageCaptureUri.getPath();
-            //bitmap  = BitmapFactory.decodeFile(path);
             Bundle extras = data.getExtras();
             bitmap = (Bitmap) extras.get("data");
             
@@ -247,7 +233,6 @@ public class LaporanMingguanFragment extends Fragment {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                //params.put("prog_terakhir", pt);
                 params.put("id_kegiatan", String.valueOf(idKegiatan));
                 params.put("rencana_mingguan", rb);
                 params.put("realisasi_mingguan",realb);
