@@ -1,6 +1,7 @@
 package com.laelektronik.user.portaldesa.Fragment;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -39,7 +40,10 @@ public class LaporanBulananFragment extends Fragment {
     Button kirim_bulanan;
     String pt, rb,realb,db,bk;
 
-    String server_url = "http://sarpras.laelektronik.com/api/login_pelaksana";
+    private String server_url = "http://sarpras.laelektronik.com/api/add_laporan_bulanan";
+
+    int idKegiatan;
+    ProgressDialog progressDialog;
 
     public LaporanBulananFragment() {
         // Required empty public constructor
@@ -51,21 +55,22 @@ public class LaporanBulananFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootview = inflater.inflate(R.layout.fragment_laporan_bulanan, container, false);
 
-        prog_terakhir = (EditText) rootview.findViewById(R.id.prog_lastmonth);
+        //prog_terakhir = (EditText) rootview.findViewById(R.id.prog_lastmonth);
         rencana_perbulan =(EditText) rootview.findViewById(R.id.plan_every_month);
         real_bulanan = (EditText) rootview.findViewById(R.id.real_bulanan);
         dev_bulanan = (EditText) rootview.findViewById(R.id.dev_bulanan);
         bulan_ke = (EditText) rootview.findViewById(R.id.num_month);
         kirim_bulanan = (Button) rootview.findViewById(R.id.kirim_bulanan);
 
+        progressDialog = new ProgressDialog(getContext());
+
+        idKegiatan = ((LaporanActivity) getActivity()).idKegiatan;
+
         kirim_bulanan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pt = prog_terakhir.getText().toString();
-                rb = rencana_perbulan.getText().toString();
-                realb = real_bulanan.getText().toString();
-                db = dev_bulanan.getText().toString();
-                bk = bulan_ke.getText().toString();
+                //pt = prog_terakhir.getText().toString();
+
                 kirim();
             }
         });
@@ -76,18 +81,30 @@ public class LaporanBulananFragment extends Fragment {
     }
 
     private void kirim(){
+        progressDialog.setMessage("Loading...");
+        progressDialog.show();
+        rb = rencana_perbulan.getText().toString();
+        realb = real_bulanan.getText().toString();
+        db = dev_bulanan.getText().toString();
+        bk = bulan_ke.getText().toString();
+
+        Log.i("sending", "send data");
 
         StringRequest request = new StringRequest(Request.Method.POST, server_url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.d("login", response.toString());
+                Log.d("Response", response.toString());
+                progressDialog.hide();
 
                 try {
                     JSONObject object = new JSONObject(response);
                     String status = object.getString("status");
 
                     if (status.equals("success")) {
-                        Toast.makeText(getContext(),"Sukses", Toast.LENGTH_LONG);
+                        Toast.makeText(getContext(),"Data berhasil ditambah", Toast.LENGTH_LONG).show();
+                    }
+                    else {
+                        Toast.makeText(getContext(),"Data gagal ditambah", Toast.LENGTH_LONG).show();
                     }
 
                 } catch (JSONException e) {
@@ -98,16 +115,18 @@ public class LaporanBulananFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Log.e("Error", "Error: " + error.getMessage());
+                Toast.makeText(getContext(),"Data gagal ditambah", Toast.LENGTH_LONG).show();
             }
         }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("prog_terakhir", pt);
-                params.put("rencana_perbulan", rb);
-                params.put("real_bulanan",realb);
-                params.put("deviasi_bulanan",db);
+                //params.put("prog_terakhir", pt);
+                params.put("id_kegiatan", String.valueOf(idKegiatan));
+                params.put("rencana_bulanan", rb);
+                params.put("realisasi_bulanan",realb);
+                params.put("defiasi_bulanan",db);
                 params.put("bulan_ke",bk);
 
                 return params;

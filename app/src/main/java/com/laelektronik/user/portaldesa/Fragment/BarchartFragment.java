@@ -101,8 +101,8 @@ public class BarchartFragment extends Fragment {
             return true;
         }
 
-        //return onOptionsItemSelected(item);
-        return true;
+        return onOptionsItemSelected(item);
+        //return true;
     }
 
     private ArrayList<BarDataSet> getDataSet() {

@@ -3,64 +3,77 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="16dp"
     tools:context="com.laelektronik.user.portaldesa.Fragment.LaporanMingguanFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <ImageView
-        android:id="@+id/iv_pic"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/kemendes"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp">
 
-    <EditText
+        <ImageView
+            android:id="@+id/iv_pic"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:background="#c4c3c3"/>
+
+        <TextView
+            android:id="@+id/text_gambar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center"
+            android:text="Tap untuk menambahkan gambar"
+            android:textColor="#fff"/>
+
+    </FrameLayout>
+
+
+    <!--<EditText
         android:id="@+id/prog_lastweek"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Progress minggu lalu"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"/>
+        android:layout_marginRight="16dp"/>-->
 
     <EditText
         android:id="@+id/plan_every_week"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Rencana mingguan"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"/>
+         />
 
     <EditText
         android:id="@+id/real_mingguan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Realisasi mingguan"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"/>
+        />
 
     <EditText
         android:id="@+id/dev_mingguan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Deviasi mingguan"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"/>
+        />
 
     <EditText
         android:id="@+id/num_week"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Minggu ke-"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"/>
+        android:inputType="number"/>
 
     <Button
         android:id="@+id/kirim_mingguan"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/btn_champer"
-        android:text="Kirim"/>
+        android:text="submit"/>
 
 </LinearLayout>
