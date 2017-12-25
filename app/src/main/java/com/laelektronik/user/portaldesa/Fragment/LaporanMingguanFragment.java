@@ -156,8 +156,7 @@ public class LaporanMingguanFragment extends Fragment {
             if (path != null)
                 bitmap  = BitmapFactory.decodeFile(path);
         } else {
-            File f = new File(mImageCaptureUri.getPath());
-//            path    = mImageCaptureUri.getPath();
+            path    = mImageCaptureUri.getPath();
             bitmap  = BitmapFactory.decodeFile(path);
         }
 
