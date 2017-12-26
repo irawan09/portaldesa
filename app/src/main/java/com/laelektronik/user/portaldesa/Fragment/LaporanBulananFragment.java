@@ -69,9 +69,26 @@ public class LaporanBulananFragment extends Fragment {
         kirim_bulanan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //pt = prog_terakhir.getText().toString();
+                rb = rencana_perbulan.getText().toString();
+                realb = real_bulanan.getText().toString();
+                db = dev_bulanan.getText().toString();
+                bk = bulan_ke.getText().toString();
 
-                kirim();
+                if (rb.trim().length() > 0 && realb.trim().length() > 0)  {
+                    if (db.trim().length()  > 0){
+                        if(bk.trim().length() > 0){
+                            kirim();
+                        } else {
+                            Toast.makeText(getContext() ,"Isi kolom bulan ke-", Toast.LENGTH_LONG).show();
+                        }
+                    } else {
+                        Toast.makeText(getContext() ,"Isi kolom deviasi bulanan", Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    // Prompt user to enter credentials
+                    Toast.makeText(getContext() ,"Isi kolom rencana perbulan dan realisasi bulanan", Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 
@@ -83,10 +100,6 @@ public class LaporanBulananFragment extends Fragment {
     private void kirim(){
         progressDialog.setMessage("Loading...");
         progressDialog.show();
-        rb = rencana_perbulan.getText().toString();
-        realb = real_bulanan.getText().toString();
-        db = dev_bulanan.getText().toString();
-        bk = bulan_ke.getText().toString();
 
         Log.i("sending", "send data");
 

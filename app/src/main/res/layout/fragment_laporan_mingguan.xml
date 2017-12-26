@@ -31,34 +31,23 @@
     </FrameLayout>
 
 
-    <!--<EditText
-        android:id="@+id/prog_lastweek"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Progress minggu lalu"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"/>-->
-
     <EditText
         android:id="@+id/plan_every_week"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Rencana mingguan"
-         />
+        android:hint="Rencana mingguan"/>
 
     <EditText
         android:id="@+id/real_mingguan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Realisasi mingguan"
-        />
+        android:hint="Realisasi mingguan"/>
 
     <EditText
         android:id="@+id/dev_mingguan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Deviasi mingguan"
-        />
+        android:hint="Deviasi mingguan"/>
 
     <EditText
         android:id="@+id/num_week"

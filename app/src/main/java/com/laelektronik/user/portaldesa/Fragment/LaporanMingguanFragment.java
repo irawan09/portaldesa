@@ -40,12 +40,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
 import static android.app.Activity.RESULT_OK;
-import static com.android.volley.Request.Method.HEAD;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -55,9 +53,9 @@ public class LaporanMingguanFragment extends Fragment {
     private Uri mImageCaptureUri;
     private ImageView mImageView;
 
-    EditText prog_terakhir, rencana_perminggu, real_mingguan, dev_mingguan, minggu_ke;
+    EditText rencana_perminggu, real_mingguan, dev_mingguan, minggu_ke;
     Button kirim_minggu;
-    protected String pt, rb,realb,db,bk, gambar_base64;
+    protected String rb,realb,db,bk, gambar_base64;
     Bitmap gambarUpload;
 
     private static final int PICK_FROM_CAMERA = 1;
@@ -80,7 +78,6 @@ public class LaporanMingguanFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootview = inflater.inflate(R.layout.fragment_laporan_mingguan, container, false);
 
-        //prog_terakhir = (EditText) rootview.findViewById(R.id.prog_lastmonth);
         rencana_perminggu = (EditText) rootview.findViewById(R.id.plan_every_week);
         real_mingguan = (EditText) rootview.findViewById(R.id.real_mingguan);
         dev_mingguan = (EditText) rootview.findViewById(R.id.dev_mingguan);
@@ -89,9 +86,9 @@ public class LaporanMingguanFragment extends Fragment {
         textGambar = (TextView) rootview.findViewById(R.id.text_gambar);
 
         idKegiatan = ((LaporanActivity) getActivity()).idKegiatan;
+        gambar_base64 = "";
 
         progressDialog = new ProgressDialog(getContext());
-
 
         final String [] items           = new String [] {"From Camera", "From SD Card"};
         ArrayAdapter<String> adapter    = new ArrayAdapter<String>(getContext(), android.R.layout.select_dialog_item,items);
@@ -138,7 +135,25 @@ public class LaporanMingguanFragment extends Fragment {
                 realb = real_mingguan.getText().toString();
                 db = dev_mingguan.getText().toString();
                 bk = minggu_ke.getText().toString();
-                kirim();
+
+                if (rb.trim().length() > 0 && realb.trim().length() > 0)  {
+                    if (db.trim().length()  > 0){
+                        if(bk.trim().length() > 0){
+                            if (gambar_base64.trim().length() > 0){
+                                kirim();
+                            } else {
+                                Toast.makeText(getContext() ,"Pilih gambar dahulu", Toast.LENGTH_LONG).show();
+                            }
+                        } else {
+                            Toast.makeText(getContext() ,"Isi baris minggu ke-", Toast.LENGTH_LONG).show();
+                        }
+                    } else {
+                        Toast.makeText(getContext() ,"Isi baris deviasi mingguan", Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    Toast.makeText(getContext() ,"Isi baris rencana mingguan dan realisasi mingguan", Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 
@@ -171,6 +186,7 @@ public class LaporanMingguanFragment extends Fragment {
         mImageView.setImageBitmap(bitmap);
         gambarUpload=bitmap;
         textGambar.setVisibility(View.GONE);
+        gambar_base64 = base64(gambarUpload);
     }
 
     public String getRealPathFromURI(Uri contentUri) {
