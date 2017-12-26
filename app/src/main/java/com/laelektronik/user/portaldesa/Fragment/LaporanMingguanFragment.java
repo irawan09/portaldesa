@@ -187,6 +187,8 @@ public class LaporanMingguanFragment extends Fragment {
         gambarUpload=bitmap;
         textGambar.setVisibility(View.GONE);
         gambar_base64 = base64(gambarUpload);
+
+
     }
 
     public String getRealPathFromURI(Uri contentUri) {

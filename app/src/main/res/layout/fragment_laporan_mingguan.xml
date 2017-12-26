@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center"
-            android:text="Tap untuk menambahkan gambar"
+            android:text="Ketuk untuk menambahkan gambar"
             android:textColor="#fff"/>
 
     </FrameLayout>
